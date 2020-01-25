@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CSI VESIT</string>
+    <string name="home">Home</string>
+    <string name="events">Events</string>
+    <string name="council">Council</string>
+    <string name="upcoming">Upcoming Events</string>
+    <string name="future">Future Events</string>
+    <string name="about">About us</string>
+    <string name="contact">Contact us</string>
+
+</resources>
