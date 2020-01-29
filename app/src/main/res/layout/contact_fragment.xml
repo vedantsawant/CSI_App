@@ -1,13 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    >
+ <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView
+     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:background="@color/black"
+         android:orientation="vertical"
+         android:scrollbars="vertical"
+         android:scrollIndicators="right"
+         >
+     <TextView
+        android:id="@+id/contactheadline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5sp"
         android:text="@string/contact"
-        android:textSize="50sp"
+        android:textSize="35sp"
         android:textColor="@color/white"></TextView>
+    <TextView
+        android:id="@+id/contactinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10sp"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:layout_below="@id/contactheadline"
+        android:text="@string/contact"></TextView>
+    <TextView
+        android:id="@+id/subjecttext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10sp"
+        android:layout_below="@id/contactinfo"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:text="@string/subject"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/edit_text_subject"
+        android:layout_margin="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="10sp"
+        android:textColor="@color/white"
+        android:hint="@string/entersubject"
+        android:textColorHint="@color/lightgrey"
+        android:layout_below="@id/subjecttext"
+        android:background="@drawable/rounded_edittext"
+        android:lines="2"
+        android:gravity="start|top"
+        android:inputType="textEmailSubject" />
+
+    <TextView
+        android:id="@+id/messagetext"
+        android:layout_below="@+id/edit_text_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10sp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:text="@string/message"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <EditText
+        android:id="@+id/edit_text_message"
+        android:layout_margin="10sp"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/messagetext"
+        android:padding="10sp"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_edittext"
+        android:hint="@string/entermessage"
+        android:textColorHint="@color/lightgrey"
+        android:gravity="start|top"
+        android:lines="3" />
+
+    <Button
+        android:id="@+id/sendbutton"
+        android:layout_margin="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10sp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/edit_text_message"
+        android:background="@drawable/rounded_button2"
+        android:text="@string/send"
+        android:textSize="15sp"/>
+     </LinearLayout>
+ </ScrollView>
+</LinearLayout>

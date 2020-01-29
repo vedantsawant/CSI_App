@@ -3,9 +3,15 @@
     <string name="home">Home</string>
     <string name="events">Events</string>
     <string name="council">Council</string>
-    <string name="upcoming">Upcoming Events</string>
-    <string name="future">Future Events</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="past">Past</string>
     <string name="about">About us</string>
-    <string name="contact">Contact us</string>
+    <string name="cont">Contact</string>
+    <string name="contact">Contact CSI-VESIT</string>
+    <string name="send">Send</string>
+    <string name="entersubject">Enter Subject</string>
+    <string name="entermessage">Enter Message</string>
+    <string name="subject">Subject</string>
+    <string name="message">Message</string>
 
 </resources>

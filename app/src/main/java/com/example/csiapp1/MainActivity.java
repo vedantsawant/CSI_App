@@ -29,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.events:
                     selected= new EventFragment();
                     break;
-                case R.id.council:
-                    selected= new CouncilFragment();
-                    break;
                 case R.id.contact:
                     selected= new ContactFragment();
                     break;
                 case R.id.about:
                     selected= new AboutFragment();
+                    break;
+                case R.id.council:
+                    selected= new CouncilFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container
