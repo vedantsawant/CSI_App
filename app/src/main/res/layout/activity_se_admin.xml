@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SE_admin"
+    android:padding="10dp"
+    android:background="@color/cardview_dark_background"
+    >
+
+    <LinearLayout
+        android:paddingTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            />
+
+        <Button
+            android:id="@+id/choose_img"
+            android:text="Choose Image"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/workshop_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter name"
+            android:textColor="#fff"
+            android:layout_marginTop="30dp"
+            />
+
+        <EditText
+            android:id="@+id/workshop_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Post"
+            android:textColor="#fff"
+            android:layout_marginTop="30dp"
+            />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            />
+
+        <Button
+            android:id="@+id/upload_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            />
+
+        <TextView
+            android:id="@+id/show_uploads"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#fff"
+            android:text="Show uploads"
+            android:paddingBottom="20dp"
+            />
+    </LinearLayout>
+</ScrollView>
