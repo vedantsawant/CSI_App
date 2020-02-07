@@ -13,5 +13,10 @@
     <string name="entermessage">Enter Message</string>
     <string name="subject">Subject</string>
     <string name="message">Message</string>
+    <string name="chooseimage">Select Image</string>
+    <string name="upload">Upload</string>
+    <string name="showupload">Show Uploads</string>
+    <string name="name">Name</string>
+    <string name="post">Post</string>
 
 </resources>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".SE_admin"
     android:padding="10dp"
-    android:background="@color/cardview_dark_background"
+    android:background="@color/black"
     >
 
     <LinearLayout
@@ -26,28 +26,62 @@
 
         <Button
             android:id="@+id/choose_img"
-            android:text="Choose Image"
-            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_marginHorizontal="100sp"
+            android:layout_marginVertical="15sp"
             android:layout_width="match_parent"
-            android:layout_marginTop="30dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:padding="10sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_below="@+id/edit_text_message"
+            android:background="@drawable/rounded_button2"
+            android:text="@string/chooseimage"
+            android:textSize="15sp"/>
 
+        <TextView
+            android:id="@+id/Namecouncil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@id/contactinfo"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:text="@string/name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         <EditText
             android:id="@+id/workshop_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10sp"
             android:hint="Enter name"
-            android:textColor="#fff"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/lightgrey"
+            android:background="@drawable/rounded_edittext"
             />
 
+        <TextView
+            android:id="@+id/postcouncil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@id/contactinfo"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:text="@string/post"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         <EditText
             android:id="@+id/workshop_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_edittext"
             android:hint="Enter Post"
-            android:textColor="#fff"
-            android:layout_marginTop="30dp"
+            android:textColorHint="@color/lightgrey"
             />
 
         <ProgressBar
@@ -55,27 +89,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_margin="10dp"
+            android:outlineSpotShadowColor="@color/colorPrimary"
+            android:outlineAmbientShadowColor="@color/colorPrimaryDark"
             android:visibility="gone"
             />
 
         <Button
             android:id="@+id/upload_button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Upload"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="100dp"
+            android:text="@string/upload"
+            android:background="@drawable/rounded_button2"
+
             />
 
         <TextView
             android:id="@+id/show_uploads"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:layout_marginTop="10dp"
-            android:textColor="#fff"
-            android:text="Show uploads"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:text="@string/showupload"
             android:paddingBottom="20dp"
             />
     </LinearLayout>
