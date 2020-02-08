@@ -44,15 +44,16 @@
             android:gravity="center_horizontal"></TextView>
     </FrameLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addevent"
+        android:id="@+id/floating_action_button"
         style="@style/Widget.MaterialComponents.FloatingActionButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:padding="15sp"
         android:layout_margin="10sp"
-        android:src="@drawable/edit_admin"
+        app:fabCustomSize="75sp"
+        android:src="@drawable/ic_add_black_24dp"
         />
 
 </RelativeLayout>
