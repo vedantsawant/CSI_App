@@ -8,6 +8,7 @@ public class Upload {
     private String mimageUrl;
     private String mKey;
     private String mWorkshopDetails;
+    private String mDate;
 
     public Upload(){
         //empty constructor needed
@@ -17,8 +18,24 @@ public class Upload {
         return mWorkshopDetails;
     }
 
+    public String getDate() {
+        return mDate;
+    }
+
+    public void setDate(String mDate) {
+        this.mDate = mDate;
+    }
+
     public void setmWorkshopDetails(String mWorkshopDetails) {
         this.mWorkshopDetails = mWorkshopDetails;
+    }
+
+    public Upload(String workshopName, String workshopDetails, String imageUrl, String date){
+        mimageUrl = imageUrl;
+        mworkshopName =  workshopName;
+        mWorkshopDetails = workshopDetails;
+        mDate = date;
+
     }
 
     public Upload(String workshopName, String workshopDetails, String imageUrl){

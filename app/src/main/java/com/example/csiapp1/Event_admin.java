@@ -2,8 +2,10 @@ package com.example.csiapp1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,10 +16,10 @@ import android.os.Handler;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,19 +34,24 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-public class SE_admin extends AppCompatActivity {
+import java.text.DateFormat;
+import java.util.Calendar;
+
+public class Event_admin extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private ImageView MyimageView;
     private Button imgBtn;
     private Button uploadBtn;
     private EditText workshopName, workshopDetails;
     private ProgressBar progressBar;
+    private Button setDateBtn;
 
     private Uri imaageUri;
 
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
     private StorageTask uploadTask;
+    private String eventDate;
 
 
     private static final int IMAGE_PICK_CODE = 1000;
@@ -53,23 +60,32 @@ public class SE_admin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_se_admin);
+        setContentView(R.layout.activity_event_admin);
 
-        MyimageView = findViewById(R.id.image_view);
-        imgBtn = findViewById(R.id.choose_img);
-        uploadBtn = findViewById(R.id.upload_button);
-        workshopName = findViewById(R.id.workshop_name);
-        workshopDetails = findViewById(R.id.workshop_details);
-        progressBar = findViewById(R.id.progress_bar);
+        MyimageView = findViewById(R.id.image_view_event);
+        imgBtn = findViewById(R.id.choose_img_event);
+        uploadBtn = findViewById(R.id.upload_button_event);
+        workshopName = findViewById(R.id.workshop_name_event);
+        workshopDetails = findViewById(R.id.workshop_details_event);
+        progressBar = findViewById(R.id.progress_bar_event);
+        setDateBtn = findViewById(R.id.select_date);
 
-        storageReference = FirebaseStorage.getInstance().getReference("/csi_uploads/se_council");
-        databaseReference = FirebaseDatabase.getInstance().getReference("/csi_uploads/se_council");
+        storageReference = FirebaseStorage.getInstance().getReference("/csi_uploads/workshops");
+        databaseReference = FirebaseDatabase.getInstance().getReference("/csi_uploads/workshops");
+
+        setDateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment  datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(), "date picker");
+            }
+        });
 
         uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(uploadTask != null && uploadTask.isInProgress()){
-                    Toast.makeText(SE_admin.this, "Upload in progress", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Event_admin.this, "Upload in progress", Toast.LENGTH_SHORT).show();
                 }else {
                     uploadFile();
                 }
@@ -91,7 +107,16 @@ public class SE_admin extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        eventDate = DateFormat.getDateInstance().format(c.getTime());
+        Toast.makeText(this, DateFormat.getDateInstance().format(c.getTime()), Toast.LENGTH_SHORT).show();
     }
 
     private String getFileExtension(Uri uri){
@@ -116,7 +141,7 @@ public class SE_admin extends AppCompatActivity {
                                     progressBar.setProgress(0);
                                 }
                             }, 0);
-                            Toast.makeText(SE_admin.this, "Upload Successfull!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Event_admin.this, "Upload Successfull!", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                             /*Upload upload = new Upload(workshopName.getText().toString().trim(),
                                     taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
@@ -128,7 +153,7 @@ public class SE_admin extends AppCompatActivity {
                             while (!urlTask.isSuccessful());
                             Uri downloadUrl = urlTask.getResult();
                             Upload upload = new Upload(workshopName.getText().toString().trim(),
-                                    workshopDetails.getText().toString().trim(),downloadUrl.toString());
+                                    workshopDetails.getText().toString().trim(),downloadUrl.toString(), eventDate);
 
                             String uploadId = databaseReference.push().getKey();
                             databaseReference.child(uploadId).setValue(upload);
@@ -139,7 +164,7 @@ public class SE_admin extends AppCompatActivity {
 
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(SE_admin.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Event_admin.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
                     }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -185,9 +210,5 @@ public class SE_admin extends AppCompatActivity {
         }
     }
 
-    private void openImagesActivity(){
-        Intent intent = new Intent(this, imageAct.class);
-        startActivity(intent);
-    }
 
 }
