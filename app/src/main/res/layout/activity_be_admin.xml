@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SE_admin"
     android:padding="10dp"
     android:background="@color/cardview_dark_background"
+    tools:context=".BE_admin"
     >
-
 
     <LinearLayout
         android:paddingTop="30dp"
@@ -104,7 +103,6 @@
             android:layout_marginHorizontal="100dp"
             android:text="@string/upload"
             android:background="@drawable/rounded_button2"
-
             />
 
     </LinearLayout>

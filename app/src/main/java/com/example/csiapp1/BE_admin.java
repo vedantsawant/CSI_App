@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,7 +31,7 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-public class SE_admin extends AppCompatActivity {
+public class BE_admin extends AppCompatActivity {
 
     private ImageView MyimageView;
     private Button imgBtn;
@@ -53,8 +52,7 @@ public class SE_admin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_se_admin);
-
+        setContentView(R.layout.activity_be_admin);
         MyimageView = findViewById(R.id.image_view);
         imgBtn = findViewById(R.id.choose_img);
         uploadBtn = findViewById(R.id.upload_button);
@@ -62,14 +60,14 @@ public class SE_admin extends AppCompatActivity {
         workshopDetails = findViewById(R.id.workshop_details);
         progressBar = findViewById(R.id.progress_bar);
 
-        storageReference = FirebaseStorage.getInstance().getReference("/csi_uploads/se_council");
-        databaseReference = FirebaseDatabase.getInstance().getReference("/csi_uploads/se_council");
+        storageReference = FirebaseStorage.getInstance().getReference("/csi_uploads/be_council");
+        databaseReference = FirebaseDatabase.getInstance().getReference("/csi_uploads/be_council");
 
         uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(uploadTask != null && uploadTask.isInProgress()){
-                    Toast.makeText(SE_admin.this, "Upload in progress", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BE_admin.this, "Upload in progress", Toast.LENGTH_SHORT).show();
                 }else {
                     uploadFile();
                 }
@@ -116,7 +114,7 @@ public class SE_admin extends AppCompatActivity {
                                     progressBar.setProgress(0);
                                 }
                             }, 0);
-                            Toast.makeText(SE_admin.this, "Upload Successfull!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(BE_admin.this, "Upload Successfull!", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                             /*Upload upload = new Upload(workshopName.getText().toString().trim(),
                                     taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
@@ -139,7 +137,7 @@ public class SE_admin extends AppCompatActivity {
 
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(SE_admin.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(BE_admin.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
                     }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -189,5 +187,4 @@ public class SE_admin extends AppCompatActivity {
         Intent intent = new Intent(this, imageAct.class);
         startActivity(intent);
     }
-
 }

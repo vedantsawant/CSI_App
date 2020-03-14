@@ -31,7 +31,8 @@ public class imageAct extends AppCompatActivity implements ImageAdapter.onItemCl
 
     private ProgressBar mProgressCircle;
 
-    private FirebaseStorage mStorage;
+   // private FirebaseStorage mStorage;
+   private StorageReference mStorage;
     private DatabaseReference databaseReference;
     private ValueEventListener mDBlistener;
     private List<Upload> mUploads;
@@ -55,8 +56,9 @@ public class imageAct extends AppCompatActivity implements ImageAdapter.onItemCl
 
         mAdapter.setItemClickListener(imageAct.this);
 
-        mStorage = FirebaseStorage.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("csi_uploads");
+       // mStorage = FirebaseStorage.getInstance().getReference();
+        //databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("csi_uploads");
 
         mDBlistener = databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -99,7 +101,9 @@ public class imageAct extends AppCompatActivity implements ImageAdapter.onItemCl
         Upload selectItem = mUploads.get(position);
         final String selectKey = selectItem.getmKey();
 
-        StorageReference imageRef = mStorage.getReferenceFromUrl(selectItem.getMimageUrl());
+        //StorageReference imageRef = mStorage.getReferenceFromUrl(selectItem.getMimageUrl());
+        FirebaseStorage mStorageA = mStorage.getStorage();
+        StorageReference imageRef = mStorageA.getReferenceFromUrl(selectItem.getMimageUrl());
         imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

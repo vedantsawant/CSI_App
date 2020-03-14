@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TE_council"
-    android:background="@color/cardview_dark_background"
+    tools:context=".UpcomingTabFragment"
+    android:background="@color/black"
     >
 
     <ProgressBar
-        android:id="@+id/progress_circle_te"
+        android:id="@+id/progress_circle_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_te"
+        android:id="@+id/recycler_view_event"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/cardview_dark_background"
         />
-
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/TEcouncil_admin"
+        android:id="@+id/Event_admin"
         style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:layout_width="70dp"
         android:layout_height="70dp"

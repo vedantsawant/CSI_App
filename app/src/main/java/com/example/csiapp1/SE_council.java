@@ -65,7 +65,7 @@ public class SE_council extends AppCompatActivity implements ImageAdapter.onItem
         mAdapter.setItemClickListener(SE_council.this);
 
         mStorage = FirebaseStorage.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("csi_uploads");
+        databaseReference = FirebaseDatabase.getInstance().getReference("csi_uploads/se_council");
 
         mDBlistener = databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

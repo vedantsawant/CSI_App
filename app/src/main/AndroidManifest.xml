@@ -9,15 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".imageAct"></activity>
-        <activity android:name=".SE_admin"></activity>
+        <activity android:name=".Event_admin"></activity>
+        <activity android:name=".teacher_admin" />
+        <activity android:name=".BE_admin" />
+        <activity android:name=".TE_admin" />
+        <activity android:name=".imageAct" />
+        <activity android:name=".SE_admin" />
         <activity android:name=".faculty_incharge" />
         <activity android:name=".BE_council" />
         <activity android:name=".TE_council" />
         <activity android:name=".SE_council" />
         <activity android:name=".MainActivity">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
