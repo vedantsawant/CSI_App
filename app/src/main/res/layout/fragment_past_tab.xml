@@ -7,14 +7,17 @@
     android:background="@color/black"
     >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ProgressBar
+        android:id="@+id/progress_circle_past"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PastTab Fragment"
-        android:textColor="@color/white"
-        android:textSize="30dp"
         android:layout_centerInParent="true"
         />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_past"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_dark_background"/>
 
 </RelativeLayout>

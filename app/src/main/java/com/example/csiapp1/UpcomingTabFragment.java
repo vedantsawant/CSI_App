@@ -32,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -100,14 +101,46 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
                 for(DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Upload upload = postSnapshot.getValue(Upload.class);
-                    String date = upload.getDate();
+                    String date = upload.getDate().toString();
                     //Toast.makeText(getActivity(), date, Toast.LENGTH_SHORT).show();
-                   // int eventYear = Integer.parseInt(date.substring(8).trim());
-                   // int eventMonth = Integer.parseInt(date.substring(0,4).trim());
-                   // int eventDate = Integer.parseInt(date.substring(4,6).trim());
-                    upload.setmKey(postSnapshot.getKey());
+                    // int eventYear = Integer.parseInt(date.substring(8).trim());
+                    // int eventMonth = Integer.parseInt(date.substring(0,4).trim());
+                    // int eventDate = Integer.parseInt(date.substring(4,6).trim());
+                    System.out.println("HERE " + date);
 
-                    mUploads.add(upload);
+
+                    int Wyear = Integer.parseInt(date.substring(date.length() - 4).trim());
+
+                    String month = date.substring(0,4).trim();
+                    int Wmon = getWMonth(month);
+                    System.out.println("OK" + date);
+                    int Wday = Integer.parseInt(date.substring(3, date.indexOf(',')).trim());
+
+                    Calendar c = new GregorianCalendar();
+                    int mon = c.get(Calendar.MONTH);
+
+                    int year = c.get(Calendar.YEAR);
+                    int day = c.get(Calendar.DAY_OF_MONTH);
+
+                    boolean upcoming = true;
+
+                    if(year > Wyear){
+                        upcoming = false;
+                    }else{
+                        if(mon > Wmon){
+                            upcoming = false;
+                        }else{
+                            if(day > Wday){
+                                upcoming = false;
+                            }
+                        }
+                    }
+
+                    System.out.println("HERE Upcoming event ? : " + upcoming);
+                    if(upcoming){
+                        upload.setmKey(postSnapshot.getKey());
+                        mUploads.add(upload);
+                    }
                 }
 
                 mAdapter.notifyDataSetChanged();
@@ -122,6 +155,24 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
             }
         });
     }
+
+
+
+    private int getWMonth(String month){
+        int Wmonth = 0;
+        try {
+            Date Wdate = new SimpleDateFormat("MMM", Locale.ENGLISH).parse(month);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(Wdate);
+            Wmonth = cal.get(Calendar.MONTH);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return Wmonth;
+    }
+
+
 
     @Override
     public void onItemClick(int position, String details, String name) {
