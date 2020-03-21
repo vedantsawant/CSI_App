@@ -29,7 +29,7 @@ public class Spash_Screen extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                Intent intent = new Intent(Spash_Screen.this, MainActivity.class);
+                Intent intent = new Intent(Spash_Screen.this, SignIn.class);
                 startActivity(intent);
                 finish();
             }
