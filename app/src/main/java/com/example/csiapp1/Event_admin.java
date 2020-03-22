@@ -153,7 +153,7 @@ public class Event_admin extends AppCompatActivity implements DatePickerDialog.O
                             while (!urlTask.isSuccessful());
                             Uri downloadUrl = urlTask.getResult();
                             Upload upload = new Upload(workshopName.getText().toString().trim(),
-                                    workshopDetails.getText().toString().trim(),downloadUrl.toString(), eventDate);
+                                    workshopDetails.getText().toString().trim(),downloadUrl.toString(), eventDate, "https://csivesit.co.in/");
 
                             String uploadId = databaseReference.push().getKey();
                             databaseReference.child(uploadId).setValue(upload);

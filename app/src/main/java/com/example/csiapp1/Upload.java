@@ -9,6 +9,15 @@ public class Upload {
     private String mKey;
     private String mWorkshopDetails;
     private String mDate;
+    private String regURL;
+
+    public String getRegURL() {
+        return regURL;
+    }
+
+    public void setRegURL(String regURL) {
+        this.regURL = regURL;
+    }
 
     public Upload(){
         //empty constructor needed
@@ -30,12 +39,12 @@ public class Upload {
         this.mWorkshopDetails = mWorkshopDetails;
     }
 
-    public Upload(String workshopName, String workshopDetails, String imageUrl, String date){
+    public Upload(String workshopName, String workshopDetails, String imageUrl, String date, String URL){
         mimageUrl = imageUrl;
         mworkshopName =  workshopName;
         mWorkshopDetails = workshopDetails;
         mDate = date;
-
+        regURL = URL;
     }
 
     public Upload(String workshopName, String workshopDetails, String imageUrl){

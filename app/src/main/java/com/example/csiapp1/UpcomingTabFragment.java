@@ -127,7 +127,7 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
                 for(DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Upload upload = postSnapshot.getValue(Upload.class);
-                    String date = upload.getDate().toString();
+                    String date = upload.getDate();
                     //Toast.makeText(getActivity(), date, Toast.LENGTH_SHORT).show();
                     // int eventYear = Integer.parseInt(date.substring(8).trim());
                     // int eventMonth = Integer.parseInt(date.substring(0,4).trim());
@@ -139,7 +139,6 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
                     String month = date.substring(0,4).trim();
                     int Wmon = getWMonth(month);
-                    System.out.println("OK" + date);
                     int Wday = Integer.parseInt(date.substring(3, date.indexOf(',')).trim());
 
                     Calendar c = new GregorianCalendar();
@@ -156,9 +155,11 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
                         if(mon > Wmon){
                             upcoming = false;
                         }else{
-                            if(day > Wday){
-                                upcoming = false;
-                            }
+                         if(mon == Wmon){
+                             if(day > Wday){
+                                 upcoming = false;
+                             }
+                         }
                         }
                     }
 
@@ -200,7 +201,6 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
             Calendar cal = Calendar.getInstance();
             cal.setTime(Wdate);
             Wmonth = cal.get(Calendar.MONTH);
-
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -210,8 +210,8 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
 
     @Override
-    public void onItemClick(int position, String details, String name) {
-        DetailsDialog detailsDialog = new DetailsDialog(details, name);
+    public void onItemClick(int position, String details, String name, String url) {
+        DetailsDialog detailsDialog = new DetailsDialog(details, name, url);
         detailsDialog.show(getFragmentManager(), "details dialog");
     }
 

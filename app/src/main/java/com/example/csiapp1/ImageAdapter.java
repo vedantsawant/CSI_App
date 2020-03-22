@@ -51,7 +51,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
         Picasso.with(mContext)
             .load(uploadCurrent.getMimageUrl())
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(R.drawable.loading)
                 .fit()
                 .centerCrop()
                 .into(holder.imageView);
@@ -85,8 +85,9 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
                 if(position != RecyclerView.NO_POSITION){
                     Upload upTest = mUploads.get(position);
                     details = upTest.getmWorkshopDetails();
+                    String url = upTest.getRegURL();
                     String name = upTest.getMworkshopName();
-                    mListener.onItemClick(position, details, name);
+                    mListener.onItemClick(position, details, name, url);
                 }
             }
         }
@@ -124,7 +125,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     }
 
     public interface onItemClickListener{
-        void onItemClick(int position, String details, String name);
+        void onItemClick(int position, String details, String name, String url);
         void onEditClick(int position);
         void onDeleteClick(int position);
     }

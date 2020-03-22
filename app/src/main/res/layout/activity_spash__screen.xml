@@ -26,19 +26,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:max="100"
+        android:padding="10dp"
         android:layout_below="@id/splash_text"
         android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
-        android:outlineSpotShadowColor="@color/colorPrimaryDark"
-        android:outlineAmbientShadowColor="@color/colorPrimaryDark"
-
+        android:outlineSpotShadowColor="@color/white"
+        android:outlineAmbientShadowColor="@color/white"
         />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your portal to anything and everything CSI-VESIT"
+        android:text=""
         android:layout_below="@id/splash_progress"
         android:layout_centerHorizontal="true"
         android:padding="4dp"

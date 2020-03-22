@@ -101,8 +101,8 @@ public class BE_council extends AppCompatActivity implements ImageAdapter.onItem
 
 
     @Override
-    public void onItemClick(int position, String details, String name) {
-        DetailsDialog detailsDialog = new DetailsDialog(details, name);
+    public void onItemClick(int position, String details, String name, String URl) {
+        DetailsDialog detailsDialog = new DetailsDialog(details, name, URl);
         detailsDialog.show(getSupportFragmentManager(), "details dialog");
     }
 

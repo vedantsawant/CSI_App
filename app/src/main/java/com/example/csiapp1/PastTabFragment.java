@@ -94,7 +94,6 @@ public class PastTabFragment extends Fragment implements ImageAdapter.onItemClic
                     // int eventYear = Integer.parseInt(date.substring(8).trim());
                     // int eventMonth = Integer.parseInt(date.substring(0,4).trim());
                     // int eventDate = Integer.parseInt(date.substring(4,6).trim());
-                    System.out.println("HERE " + date);
 
 
                     int Wyear = Integer.parseInt(date.substring(date.length() - 4).trim());
@@ -118,13 +117,14 @@ public class PastTabFragment extends Fragment implements ImageAdapter.onItemClic
                         if(mon > Wmon){
                             upcoming = false;
                         }else{
-                            if(day > Wday){
-                                upcoming = false;
+                            if(mon == Wmon){
+                                if(day > Wday){
+                                    upcoming = false;
+                                }
                             }
                         }
                     }
 
-                    System.out.println("HERE Upcoming event ? : " + upcoming);
                     if(!upcoming){
                         upload.setmKey(postSnapshot.getKey());
                         mUploads.add(upload);
@@ -158,8 +158,8 @@ public class PastTabFragment extends Fragment implements ImageAdapter.onItemClic
     }
 
     @Override
-    public void onItemClick(int position, String details, String name) {
-        DetailsDialog detailsDialog = new DetailsDialog(details, name);
+    public void onItemClick(int position, String details, String name, String Url) {
+        DetailsDialog detailsDialog = new DetailsDialog(details, name, Url);
         detailsDialog.show(getFragmentManager(), "details dialog");
     }
 
