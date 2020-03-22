@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +38,8 @@ public class SE_council extends AppCompatActivity implements ImageAdapter.onItem
     private DatabaseReference databaseReference;
     private ValueEventListener mDBlistener;
     private List<Upload> mUploads;
+    UpcomingTabFragment upcomingTabFragment = new UpcomingTabFragment();
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,9 @@ public class SE_council extends AppCompatActivity implements ImageAdapter.onItem
         setContentView(R.layout.activity_se_council);
 
         fb1 = findViewById(R.id.SEcouncil_admin);
+        if(!upcomingTabFragment.checkAdmin(mAuth))
+            fb1.hide();
+
         fb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +57,8 @@ public class SE_council extends AppCompatActivity implements ImageAdapter.onItem
                 startActivity(intent);
             }
         });
+
+
 
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);

@@ -24,5 +24,6 @@
     <string name="login">Login</string>
     <string name="password">password</string>
     <string name="email">EMAIL</string>
+    <string name="register">Register</string>
 
 </resources>

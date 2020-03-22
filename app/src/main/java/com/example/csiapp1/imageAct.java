@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +37,7 @@ public class imageAct extends AppCompatActivity implements ImageAdapter.onItemCl
     private DatabaseReference databaseReference;
     private ValueEventListener mDBlistener;
     private List<Upload> mUploads;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

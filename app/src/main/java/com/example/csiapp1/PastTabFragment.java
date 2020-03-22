@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,7 +38,7 @@ import java.util.Locale;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PastTabFragment extends Fragment{
+public class PastTabFragment extends Fragment implements ImageAdapter.onItemClickListener{
 
 
     private RecyclerView mRecyclerView;
@@ -152,6 +155,37 @@ public class PastTabFragment extends Fragment{
             e.printStackTrace();
         }
         return Wmonth;
+    }
+
+    @Override
+    public void onItemClick(int position, String details, String name) {
+        DetailsDialog detailsDialog = new DetailsDialog(details, name);
+        detailsDialog.show(getFragmentManager(), "details dialog");
+    }
+
+    @Override
+    public void onEditClick(int position) {
+        Toast.makeText(getActivity(), "Edit at position " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDeleteClick(int position) {
+        Upload selectItem = mUploads.get(position);
+        final String selectKey = selectItem.getmKey();
+
+        StorageReference imageRef = mStorage.getReferenceFromUrl(selectItem.getMimageUrl());
+        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                databaseReference.child(selectKey).removeValue();
+                Toast.makeText(getActivity(), "Item deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Deletion Failed!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }
