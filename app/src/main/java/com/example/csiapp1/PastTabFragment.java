@@ -96,12 +96,21 @@ public class PastTabFragment extends Fragment implements ImageAdapter.onItemClic
                     // int eventDate = Integer.parseInt(date.substring(4,6).trim());
 
 
-                    int Wyear = Integer.parseInt(date.substring(date.length() - 4).trim());
+                    int Wyear, Wmon, Wday = 0;
 
-                    String month = date.substring(0,4).trim();
-                    int Wmon = getWMonth(month);
+                    if(date.indexOf("-") == -1){
 
-                    int Wday = Integer.parseInt(date.substring(4, date.indexOf(',')).trim());
+                        Wyear = Integer.parseInt(date.substring(date.length() - 4).trim());
+
+                        String month = date.substring(0, 4).trim();
+                        Wmon = getWMonth(month);
+                        Wday = Integer.parseInt(date.substring(3, date.indexOf(',')).trim());
+                    }else{
+                        Wyear = Integer.parseInt(date.substring(date.length() - 4).trim());
+                        Wday = Integer.parseInt(date.substring(0, date.indexOf('-')).trim());
+                        String month = date.substring(date.indexOf('-')+1, date.indexOf('-') + 4).trim();
+                        Wmon = getWMonth(month);
+                    }
 
                     Calendar c = new GregorianCalendar();
                     int mon = c.get(Calendar.MONTH);
@@ -111,29 +120,30 @@ public class PastTabFragment extends Fragment implements ImageAdapter.onItemClic
 
                     boolean upcoming = true;
 
-                    if(year > Wyear){
+                    if (year > Wyear) {
                         upcoming = false;
-                    }else{
-                        if(mon > Wmon){
+                    } else {
+                        if (mon > Wmon) {
                             upcoming = false;
-                        }else{
-                            if(mon == Wmon){
-                                if(day > Wday){
+                        } else {
+                            if (mon == Wmon) {
+                                if (day > Wday) {
                                     upcoming = false;
                                 }
                             }
                         }
                     }
 
-                    if(!upcoming){
+                    // System.out.println("HERE Upcoming event ? : " + upcoming);
+                    if (!upcoming) {
                         upload.setmKey(postSnapshot.getKey());
                         mUploads.add(upload);
                     }
+
+                    mAdapter.notifyDataSetChanged();
+
+                    mProgressCircle.setVisibility(View.INVISIBLE);
                 }
-
-                mAdapter.notifyDataSetChanged();
-
-                mProgressCircle.setVisibility(View.INVISIBLE);
             }
 
             @Override

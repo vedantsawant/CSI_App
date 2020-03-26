@@ -56,7 +56,7 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
     private ValueEventListener mDBlistener;
     private List<Upload> mUploads;
     private FirebaseAuth mAuth;
-    private String admins[] = {"swapnilgore029@gmail.com", "test"};
+    private String admins[] = {"swapnilgore029@gmail.com", "test", "vedant.sawant.2604@gmail.com"};
     public boolean isAdmin = false;
 
     public UpcomingTabFragment() {
@@ -125,21 +125,30 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
                 mUploads.clear();
 
-                for(DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Upload upload = postSnapshot.getValue(Upload.class);
                     String date = upload.getDate();
                     //Toast.makeText(getActivity(), date, Toast.LENGTH_SHORT).show();
                     // int eventYear = Integer.parseInt(date.substring(8).trim());
                     // int eventMonth = Integer.parseInt(date.substring(0,4).trim());
                     // int eventDate = Integer.parseInt(date.substring(4,6).trim());
-                   // System.out.println("HERE " + date);
+                    // System.out.println("HERE " + date);
 
+                    int Wyear, Wmon, Wday = 0;
 
-                    int Wyear = Integer.parseInt(date.substring(date.length() - 4).trim());
+                    if(date.indexOf("-") == -1){
 
-                    String month = date.substring(0,4).trim();
-                    int Wmon = getWMonth(month);
-                    int Wday = Integer.parseInt(date.substring(3, date.indexOf(',')).trim());
+                     Wyear = Integer.parseInt(date.substring(date.length() - 4).trim());
+
+                    String month = date.substring(0, 4).trim();
+                    Wmon = getWMonth(month);
+                    Wday = Integer.parseInt(date.substring(3, date.indexOf(',')).trim());
+                    }else{
+                        Wyear = Integer.parseInt(date.substring(date.length() - 4).trim());
+                        Wday = Integer.parseInt(date.substring(0, date.indexOf('-')).trim());
+                        String month = date.substring(date.indexOf('-')+1, date.indexOf('-') + 4).trim();
+                        Wmon = getWMonth(month);
+                    }
 
                     Calendar c = new GregorianCalendar();
                     int mon = c.get(Calendar.MONTH);
@@ -149,30 +158,30 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
                     boolean upcoming = true;
 
-                    if(year > Wyear){
+                    if (year > Wyear) {
                         upcoming = false;
-                    }else{
-                        if(mon > Wmon){
+                    } else {
+                        if (mon > Wmon) {
                             upcoming = false;
-                        }else{
-                         if(mon == Wmon){
-                             if(day > Wday){
-                                 upcoming = false;
-                             }
-                         }
+                        } else {
+                            if (mon == Wmon) {
+                                if (day > Wday) {
+                                    upcoming = false;
+                                }
+                            }
                         }
                     }
 
-                   // System.out.println("HERE Upcoming event ? : " + upcoming);
-                    if(upcoming){
+                    // System.out.println("HERE Upcoming event ? : " + upcoming);
+                    if (upcoming) {
                         upload.setmKey(postSnapshot.getKey());
                         mUploads.add(upload);
                     }
-                }
 
                 mAdapter.notifyDataSetChanged();
 
                 mProgressCircle.setVisibility(View.INVISIBLE);
+            }
             }
 
             @Override
