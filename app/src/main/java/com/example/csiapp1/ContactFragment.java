@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.content.Intent;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 public class ContactFragment extends Fragment {
     public EditText mEditTextSubject;
     public EditText mEditTextMessage;
+    public TextView t;
 
     @Nullable
     @Override
@@ -32,7 +34,8 @@ public class ContactFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //setContentView(R.layout.contact_fragment);
-
+        t = getView().findViewById(R.id.contactinfo);
+        t.setText("Soham Sapkal(Chairperson):\nTarun Dadlani(Sr. Secretary):\nAjay More(Sr. Treasurer):\nEmail: csi.vesit@ves.ac.in");
         mEditTextSubject = (EditText) getView().findViewById(R.id.edit_text_subject);
         mEditTextMessage = (EditText) getView().findViewById(R.id.edit_text_message);
 
