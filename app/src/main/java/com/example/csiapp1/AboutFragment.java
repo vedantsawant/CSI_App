@@ -52,4 +52,4 @@ public class AboutFragment extends Fragment {
                     AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         }
 
-}
+}}
