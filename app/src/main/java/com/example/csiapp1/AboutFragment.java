@@ -20,7 +20,7 @@ public class AboutFragment extends Fragment {
       //  return inflater.inflate(R.layout.about_fragment,container,false);
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.about_fragment, container, false);
         String des = "Desciption text";
-        simulateDayNight(0);
+        simulateDayNight(1);
         View aboutPage = new AboutPage(getActivity())
                 .isRTL(false)
                 .setImage(R.drawable.csi2)
