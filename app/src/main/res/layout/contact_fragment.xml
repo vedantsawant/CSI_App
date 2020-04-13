@@ -27,24 +27,38 @@
              android:padding="5sp"
              android:text="@string/contact"
              android:textColor="@color/white"
-             android:textSize="35sp"></TextView>
+             android:textSize="40sp"></TextView>
 
          <TextView
              android:id="@+id/contactinfo"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_below="@id/contactheadline"
+             android:layout_marginTop="20dp"
              android:fontFamily="@font/quantico"
              android:padding="10sp"
              android:text="@string/contact"
              android:textColor="@color/white"
-             android:textSize="15dp"></TextView>
+             android:textSize="12dp"></TextView>
 
+         <TextView
+             android:id="@+id/headingtext"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_below="@id/contactinfo"
+             android:layout_marginTop="10dp"
+             android:gravity="center_horizontal"
+             android:fontFamily="@font/share_tech_mono"
+             android:padding="10sp"
+             android:text="@string/emailus"
+             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+             android:textColor="@color/white"
+             android:textSize="25sp" />
          <TextView
              android:id="@+id/subjecttext"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:layout_below="@id/contactinfo"
+             android:layout_below="@id/headingtext"
              android:fontFamily="@font/share_tech_mono"
              android:padding="10sp"
              android:text="@string/subject"

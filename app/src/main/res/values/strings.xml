@@ -25,5 +25,6 @@
     <string name="password">password</string>
     <string name="email">EMAIL</string>
     <string name="register">Register</string>
+    <string name="emailus">Email us</string>
 
 </resources>
