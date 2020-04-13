@@ -115,8 +115,9 @@
             android:layout_margin="10dp"
             android:outlineSpotShadowColor="@color/colorPrimary"
             android:outlineAmbientShadowColor="@color/colorPrimaryDark"
-            android:visibility="gone"
+            android:visibility="visible"
             />
+
 
     </LinearLayout>
 
