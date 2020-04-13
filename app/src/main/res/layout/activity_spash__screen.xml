@@ -11,15 +11,15 @@
         android:id="@+id/splash_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CSI VESIT"
-        android:textSize="70dp"
-        android:padding="10dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:background="@drawable/spash_box"
         android:layout_centerInParent="true"
         android:layout_marginBottom="50dp"
-        />
+        android:background="@drawable/spash_box"
+        android:fontFamily="@font/press_start_2p"
+        android:padding="15dp"
+        android:text="CSI VESIT"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:textStyle="bold" />
     <ProgressBar
         android:id="@+id/splash_progress"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"

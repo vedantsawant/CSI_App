@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -65,6 +67,7 @@ public class SignIn extends AppCompatActivity {
     private void register(){
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
+        String emailregex = "^[_A-Za-z0-9-]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.(?:[A-Z]{2,}|co)*(\\\\.(?:[A-Z]{2,}|in)*))+$";
 
         if (email.isEmpty()) {
             editTextEmail.setError("Email is required");
@@ -72,8 +75,8 @@ public class SignIn extends AppCompatActivity {
             return;
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.setError("Please enter a valid email");
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() && !email.matches(emailregex)) {
+            editTextEmail.setError("Please enter a valid VES email");
             editTextEmail.requestFocus();
             return;
         }
@@ -117,14 +120,14 @@ public class SignIn extends AppCompatActivity {
     public void authenticate() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-
+        String emailregex = "^[_A-Za-z0-9-]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.(?:[A-Z]{2,}|co)*(\\\\.(?:[A-Z]{2,}|in)*))+$";
         if (email.isEmpty()) {
             editTextEmail.setError("Email is required");
             editTextEmail.requestFocus();
             return;
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() && !email.matches(emailregex)) {
             editTextEmail.setError("Please enter a valid email");
             editTextEmail.requestFocus();
             return;
@@ -172,8 +175,8 @@ public class SignIn extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if (mAuth.getCurrentUser() != null) {
-            //finish();
-            //startActivity(new Intent(this, MainActivity.class));
+            finish();
+            startActivity(new Intent(this, MainActivity.class));
         }
     }
 

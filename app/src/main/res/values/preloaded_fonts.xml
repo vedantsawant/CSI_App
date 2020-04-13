@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/aldrich</item>
+        <item>@font/press_start_2p</item>
+        <item>@font/quantico</item>
+        <item>@font/source_code_pro</item>
+    </array>
+</resources>
