@@ -13,18 +13,18 @@
     android:title="@string/cont"
     android:iconTint="@color/lightblue"
     android:iconTintMode="multiply"></item>
-    <item
-        android:id="@+id/about"
-        android:icon="@drawable/ic_info_outline_black_24dp"
-        android:title="@string/about"
-        android:iconTint="@color/lightblue"
-        android:iconTintMode="multiply"></item>
+
     <item
         android:id="@+id/council"
         android:icon="@drawable/ic_people_outline_black_24dp"
         android:title="@string/council"
         android:iconTint="@color/lightblue"
         android:iconTintMode="multiply"></item>
-S
+    <item
+        android:id="@+id/about"
+        android:icon="@drawable/ic_info_outline_black_24dp"
+        android:title="@string/about"
+        android:iconTint="@color/lightblue"
+        android:iconTintMode="multiply"></item>
 
 </menu>
