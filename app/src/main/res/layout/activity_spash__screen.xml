@@ -15,10 +15,13 @@
         android:layout_marginBottom="50dp"
         android:background="@drawable/spash_box"
         android:fontFamily="@font/press_start_2p"
-        android:padding="15dp"
+        android:layout_marginHorizontal="5dp"
+        android:padding="10dp"
+        android:gravity="center"
+        android:lineSpacingExtra="10dp"
         android:text="CSI VESIT"
         android:textColor="@color/white"
-        android:textSize="40dp"
+        android:textSize="50dp"
         android:textStyle="bold" />
     <ProgressBar
         android:id="@+id/splash_progress"

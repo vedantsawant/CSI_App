@@ -18,7 +18,7 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.about_fragment, container, false);
-        String des = "Desciption text";
+        String des = "The CSI-VESIT council is an amalgamation of various people who collectively work to create and host events which are enthralling as well as beneficial to the students of our college. This includes a plethora of technical events and educational workshops.\nThe council works on improving the quality of interaction with each one of its society members.";
         simulateDayNight(1);
         View aboutPage = new AboutPage(getActivity())
 
@@ -29,6 +29,7 @@ public class AboutFragment extends Fragment {
                 .addEmail("csi.vesit@ves.ac.in")
                 .addFacebook("csivesit")
                 .addInstagram("csi_vesit")
+                .addWebsite("http://www.csivesit.org/")
                 .create();
 
         viewGroup.addView(aboutPage);

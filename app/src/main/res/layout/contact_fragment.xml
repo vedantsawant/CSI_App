@@ -49,22 +49,22 @@
              android:layout_marginTop="10dp"
              android:gravity="center_horizontal"
              android:fontFamily="@font/share_tech_mono"
-             android:padding="10sp"
+             android:padding="10dp"
              android:text="@string/emailus"
              android:textAppearance="@style/TextAppearance.AppCompat.Large"
              android:textColor="@color/white"
-             android:textSize="25sp" />
+             android:textSize="25dp" />
          <TextView
              android:id="@+id/subjecttext"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_below="@id/headingtext"
              android:fontFamily="@font/share_tech_mono"
-             android:padding="10sp"
+             android:padding="10dp"
              android:text="@string/subject"
              android:textAppearance="@style/TextAppearance.AppCompat.Large"
              android:textColor="@color/white"
-             android:textSize="20sp" />
+             android:textSize="20dp" />
 
          <EditText
              android:id="@+id/edit_text_subject"
@@ -79,7 +79,7 @@
              android:hint="@string/entersubject"
              android:inputType="textEmailSubject"
              android:lines="2"
-             android:padding="10sp"
+             android:padding="10dp"
              android:textAlignment="center"
              android:textColor="@color/white"
              android:textColorHint="@color/lightgrey" />
@@ -90,11 +90,11 @@
              android:layout_height="wrap_content"
              android:layout_below="@+id/edit_text_subject"
              android:fontFamily="@font/share_tech_mono"
-             android:padding="10sp"
+             android:padding="10dp"
              android:text="@string/message"
              android:textAppearance="@style/TextAppearance.AppCompat.Large"
              android:textColor="@color/white"
-             android:textSize="20sp" />
+             android:textSize="20dp" />
 
          <EditText
              android:id="@+id/edit_text_message"
@@ -108,7 +108,7 @@
              android:fontFamily="@font/quantico"
              android:gravity="center_horizontal"
              android:hint="@string/entermessage"
-             android:padding="10sp"
+             android:padding="10dp"
              android:textAlignment="center"
              android:textColor="@color/white"
              android:textColorHint="@color/lightgrey" />
@@ -123,9 +123,9 @@
              android:background="@drawable/rounded_button2"
              android:fontFamily="@font/aldrich"
              android:gravity="center"
-             android:padding="10sp"
+             android:padding="10dp"
              android:text="@string/send"
-             android:textSize="15sp" />
+             android:textSize="15dp" />
      </LinearLayout>
  </ScrollView>
 </LinearLayout>
