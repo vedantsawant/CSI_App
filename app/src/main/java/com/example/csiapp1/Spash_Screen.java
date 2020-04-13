@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 
+import com.wang.avi.AVLoadingIndicatorView;
+
 public class Spash_Screen extends AppCompatActivity {
 
     private ProgressBar splash_progress_bar;
+    private  AVLoadingIndicatorView avi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +20,8 @@ public class Spash_Screen extends AppCompatActivity {
 
 
         splash_progress_bar = findViewById(R.id.splash_progress);
-
+        avi = findViewById(R.id.splash_progress2);
+        avi.show();
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {

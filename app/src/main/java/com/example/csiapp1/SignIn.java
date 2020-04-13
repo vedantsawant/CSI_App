@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.wang.avi.AVLoadingIndicatorView;
 
 public class SignIn extends AppCompatActivity {
 
@@ -27,7 +28,8 @@ public class SignIn extends AppCompatActivity {
     Button loginButton;
     TextView tv1, tv2;
     FirebaseAuth mAuth;
-    ProgressBar progressBar;
+   // ProgressBar progressBar;
+    AVLoadingIndicatorView avi;
     Button registerButton;
 
     @Override
@@ -41,7 +43,8 @@ public class SignIn extends AppCompatActivity {
         tv1 = findViewById(R.id.tv1);
         tv2 = findViewById(R.id.tv2);
         mAuth = FirebaseAuth.getInstance();
-        progressBar = findViewById(R.id.progressbar);
+       // progressBar = findViewById(R.id.progressbar);
+        avi = findViewById(R.id.progressbar);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +90,8 @@ public class SignIn extends AppCompatActivity {
             return;
         }
 
-        progressBar.setVisibility(View.VISIBLE);
+        avi.setVisibility(View.VISIBLE);
+        avi.show();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -138,18 +142,22 @@ public class SignIn extends AppCompatActivity {
             return;
         }
 
-        progressBar.setVisibility(View.VISIBLE);
+        avi.setVisibility(View.VISIBLE);
+        avi.show();
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                progressBar.setVisibility(View.GONE);
+                avi.setVisibility(View.GONE);
+
                 if (task.isSuccessful()) {
                     FirebaseUser user = mAuth.getCurrentUser();
                     Intent intent = new Intent(SignIn.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    avi.hide();
                     startActivity(intent);
                     finish();
                 } else {
+                    avi.hide();
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 

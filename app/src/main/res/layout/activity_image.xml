@@ -8,13 +8,18 @@
     android:background="@color/black"
     >
 
-    <ProgressBar
-        android:id="@+id/progress_circle"
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progressbar"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        style="@style/AVLoadingIndicatorView"
+        android:visibility="gone"
+        app:indicatorName="BallGridBeatIndicator"
+        app:indicatorColor="@color/colorPrimaryDark"
         />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
