@@ -35,7 +35,7 @@ public class ContactFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         //setContentView(R.layout.contact_fragment);
         t = getView().findViewById(R.id.contactinfo);
-        t.setText("Soham Sapkal(Chairperson):\nTarun Dadlani(Sr. Secretary):\nAjay More(Sr. Treasurer):\nEmail: csi.vesit@ves.ac.in");
+        t.setText("Soham Sapkal(Chairperson): 9769897408\nTarun Dadlani(Sr. Secretary): 8390106634\nAjay More(Sr. Treasurer): 7718965189\nEmail: csi.vesit@ves.ac.in");
         mEditTextSubject = (EditText) getView().findViewById(R.id.edit_text_subject);
         mEditTextMessage = (EditText) getView().findViewById(R.id.edit_text_message);
 
