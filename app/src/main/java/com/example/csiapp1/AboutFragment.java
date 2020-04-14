@@ -46,6 +46,7 @@ public class AboutFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        simulateDayNight(1);
         logout = getView().findViewById(R.id.logout);
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +67,7 @@ public class AboutFragment extends Fragment {
     void simulateDayNight(int currentSetting) {
         final int DAY = 0;
         final int NIGHT = 1;
-        final int FOLLOW_SYSTEM = 3;
+        //final int FOLLOW_SYSTEM = 3;
 
         int currentNightMode = getResources().getConfiguration().uiMode
                 & Configuration.UI_MODE_NIGHT_MASK;
@@ -76,9 +77,10 @@ public class AboutFragment extends Fragment {
         } else if (currentSetting == NIGHT && currentNightMode != Configuration.UI_MODE_NIGHT_YES) {
             AppCompatDelegate.setDefaultNightMode(
                     AppCompatDelegate.MODE_NIGHT_YES);
-        } else if (currentSetting == FOLLOW_SYSTEM) {
-            AppCompatDelegate.setDefaultNightMode(
-                    AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         }
+        //else if (currentSetting == FOLLOW_SYSTEM) {
+        //    AppCompatDelegate.setDefaultNightMode(
+        //           AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        //}
 
 }}
