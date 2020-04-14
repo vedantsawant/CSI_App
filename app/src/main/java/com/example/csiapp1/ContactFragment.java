@@ -1,5 +1,6 @@
 package com.example.csiapp1;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,12 +56,11 @@ public class ContactFragment extends Fragment {
         String subject = mEditTextSubject.getText().toString();
         String message = mEditTextMessage.getText().toString();
 
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_EMAIL, recipients);
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        intent.putExtra(Intent.EXTRA_TEXT, message);
-
-        intent.setType("message/rfc822");
-        startActivity(Intent.createChooser(intent, "Select app"));
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("mailto:" + recipients + "?&subject=" + Uri.encode(subject) + "&body=" + Uri.encode(message)));
+        //intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"csi.vesit@ves.ac.in"});
+        //intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        //intent.putExtra(Intent.EXTRA_TEXT, message);
+        startActivity(Intent.createChooser(intent, "Send Email"));
     }
 }

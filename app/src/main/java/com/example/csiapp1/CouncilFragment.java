@@ -29,10 +29,13 @@ public class CouncilFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         List<String> list = new ArrayList<>();
-        list.add("SE COUNCIL");
-        list.add("TE COUNCIL");
-        list.add("BE COUNCIL");
         list.add("FACULTY IN CHARGE");
+        list.add("BE COUNCIL");
+        list.add("TE COUNCIL");
+        list.add("SE COUNCIL");
+
+
+
         View view = inflater.inflate(R.layout.council_fragment,container,false);
         RecyclerView recyclerView = view.findViewById(R.id.council_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -82,22 +85,23 @@ public class CouncilFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     //Toast.makeText(getActivity(), mList.get(position), Toast.LENGTH_SHORT).show();
-                    if(mList.get(position) == "SE COUNCIL"){
-                        Intent intent = new Intent(getActivity(), SE_council.class);
-                        startActivity(intent);
-                    }
-                    if(mList.get(position) == "TE COUNCIL"){
-                        Intent intent = new Intent(getActivity(), TE_council.class);
+                    if(mList.get(position) == "FACULTY IN CHARGE"){
+                        Intent intent = new Intent(getActivity(), faculty_incharge.class);
                         startActivity(intent);
                     }
                     if(mList.get(position) == "BE COUNCIL"){
                         Intent intent = new Intent(getActivity(), BE_council.class);
                         startActivity(intent);
                     }
-                    if(mList.get(position) == "FACULTY IN CHARGE"){
-                        Intent intent = new Intent(getActivity(), faculty_incharge.class);
+                    if(mList.get(position) == "TE COUNCIL"){
+                        Intent intent = new Intent(getActivity(), TE_council.class);
                         startActivity(intent);
                     }
+                    if(mList.get(position) == "SE COUNCIL"){
+                        Intent intent = new Intent(getActivity(), SE_council.class);
+                        startActivity(intent);
+                    }
+
                 }
             });
         }

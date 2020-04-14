@@ -82,7 +82,7 @@ public class SignIn extends AppCompatActivity {
         int len = email.length();
         System.out.println("HERE " + len);
         if(!email.substring(n+1).equals("ves.ac.in")){
-            Toast.makeText(this, "Please enter a valid ves id", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter a valid VES id", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -147,7 +147,7 @@ public class SignIn extends AppCompatActivity {
         int len = email.length();
         System.out.println("HERE " + len);
         if(!email.substring(n+1).equals("ves.ac.in") && !checkAdmin(email)){
-            Toast.makeText(this, "Please enter a valid ves id", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter a valid VES id", Toast.LENGTH_SHORT).show();
             return;
         }
 
