@@ -31,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10sp"
+            android:fontFamily="@font/montserrat_bold"
             android:layout_margin="15dp"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
@@ -44,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:fontFamily="@font/montserrat_regular"
             android:layout_below="@id/contactinfo"
             android:textColor="@color/white"
             android:textSize="20dp"
@@ -59,6 +61,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginHorizontal="15dp"
             android:textColor="@color/white"
+            android:fontFamily="@font/montserrat_extra_light"
             android:textColorHint="@color/lightgrey"
             android:background="@drawable/rounded_edittext"
             />
@@ -72,10 +75,12 @@
             android:textColor="@color/white"
             android:textSize="20dp"
             android:text="Description"
+            android:fontFamily="@font/montserrat_regular"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         <EditText
             android:id="@+id/workshop_details_event"
             android:layout_width="match_parent"
+            android:fontFamily="@font/montserrat_extra_light"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:padding="10dp"
@@ -86,11 +91,36 @@
             android:hint="Enter Workshop Description"
             android:textColorHint="@color/lightgrey"
             />
-
+        <TextView
+            android:id="@+id/formLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@id/contactinfo"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:text="Form link"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <EditText
+            android:id="@+id/formLinkEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat_extra_light"
+            android:layout_marginHorizontal="15dp"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Enter form link"
+            android:textColorHint="@color/lightgrey"
+            />
         <Button
             android:id="@+id/select_date"
             android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="15dp"
+            android:fontFamily="@font/montserrat_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Select Date"
@@ -102,6 +132,7 @@
             android:id="@+id/upload_button_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
             android:layout_marginVertical="30dp"
             android:layout_marginHorizontal="15dp"
             android:text="@string/upload"
