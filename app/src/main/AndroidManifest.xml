@@ -2,14 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.csiapp1">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/csi2"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/csi3"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Event_admin"></activity>
+        <activity android:name=".SignIn"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Event_admin" />
         <activity android:name=".teacher_admin" />
         <activity android:name=".BE_admin" />
         <activity android:name=".TE_admin" />
@@ -19,16 +24,17 @@
         <activity android:name=".BE_council" />
         <activity android:name=".TE_council" />
         <activity android:name=".SE_council" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Spash_Screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
-    <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
 
 </manifest>

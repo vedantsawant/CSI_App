@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SE_council"
-    android:background="@color/cardview_dark_background"
+    android:background="@color/black"
     >
 
     <ProgressBar
@@ -19,7 +19,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cardview_dark_background"
+        android:background="@color/black"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

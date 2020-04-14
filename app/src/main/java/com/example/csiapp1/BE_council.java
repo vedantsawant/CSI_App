@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +36,9 @@ public class BE_council extends AppCompatActivity implements ImageAdapter.onItem
     private DatabaseReference databaseReference;
     private ValueEventListener mDBlistener;
     private List<Upload> mUploads;
+    UpcomingTabFragment upcomingTabFragment = new UpcomingTabFragment();
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,9 @@ public class BE_council extends AppCompatActivity implements ImageAdapter.onItem
         setContentView(R.layout.activity_be_council);
 
         fb1 = findViewById(R.id.BEcouncil_admin);
+        if(!upcomingTabFragment.checkAdmin(mAuth))
+            fb1.hide();
+
         fb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,9 +101,9 @@ public class BE_council extends AppCompatActivity implements ImageAdapter.onItem
 
 
     @Override
-    public void onItemClick(int position, String details, String name) {
-        DetailsDialog detailsDialog = new DetailsDialog(details, name);
-        detailsDialog.show(getSupportFragmentManager(), "details dialog");
+    public void onItemClick(int position, String details, String name, String URl) {
+        CouncilDialog councilDialog = new CouncilDialog(details, name, URl);
+        councilDialog.show(getSupportFragmentManager(), "details dialog");
     }
 
     @Override

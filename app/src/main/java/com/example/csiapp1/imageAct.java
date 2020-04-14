@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,13 +31,14 @@ public class imageAct extends AppCompatActivity implements ImageAdapter.onItemCl
     private RecyclerView mRecyclerView;
     private ImageAdapter mAdapter;
 
-    private ProgressBar mProgressCircle;
 
+    private AVLoadingIndicatorView avi;
    // private FirebaseStorage mStorage;
    private StorageReference mStorage;
     private DatabaseReference databaseReference;
     private ValueEventListener mDBlistener;
     private List<Upload> mUploads;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +49,8 @@ public class imageAct extends AppCompatActivity implements ImageAdapter.onItemCl
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mProgressCircle = findViewById(R.id.progress_circle);
-
+        avi = findViewById(R.id.progressbar);
+        avi.show();
         mUploads = new ArrayList<>();
 
 
@@ -73,21 +76,21 @@ public class imageAct extends AppCompatActivity implements ImageAdapter.onItemCl
                 }
 
                 mAdapter.notifyDataSetChanged();
-
-                mProgressCircle.setVisibility(View.INVISIBLE);
+                avi.hide();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(imageAct.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-                mProgressCircle.setVisibility(View.INVISIBLE);
+
+               avi.hide();
             }
         });
     }
 
     @Override
-    public void onItemClick(int position, String details, String name) {
-        DetailsDialog detailsDialog = new DetailsDialog(details, name);
+    public void onItemClick(int position, String details, String name, String Url) {
+        DetailsDialog detailsDialog = new DetailsDialog(details, name, Url);
         detailsDialog.show(getSupportFragmentManager(), "details dialog");
     }
 

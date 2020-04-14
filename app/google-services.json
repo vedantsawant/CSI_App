@@ -52,6 +52,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "729979025896-51msogu11vbblgjqlro9l4qne6bblqb9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.csiapp1",
+            "certificate_hash": "30e94d74d03872190055515b66066f27d2be6549"
+          }
+        },
+        {
           "client_id": "729979025896-giagocdtecu6196u4pvvrevksurhb35u.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

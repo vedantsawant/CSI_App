@@ -2,6 +2,7 @@ package com.example.csiapp1;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,11 +13,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ListUpdateCallback;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
@@ -25,6 +29,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     private List<Upload> mUploads;
     private onItemClickListener mListener;
     private String details;
+    UpcomingTabFragment upcomingTabFragment = new UpcomingTabFragment();
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     public ImageAdapter(Context context, List<Upload> uploads){
         mContext = context;
@@ -45,7 +51,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
         Picasso.with(mContext)
             .load(uploadCurrent.getMimageUrl())
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(R.drawable.loading)
                 .fit()
                 .centerCrop()
                 .into(holder.imageView);
@@ -79,20 +85,24 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
                 if(position != RecyclerView.NO_POSITION){
                     Upload upTest = mUploads.get(position);
                     details = upTest.getmWorkshopDetails();
+                    String url = upTest.getRegURL();
                     String name = upTest.getMworkshopName();
-                    mListener.onItemClick(position, details, name);
+                    mListener.onItemClick(position, details, name, url);
                 }
             }
         }
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.setHeaderTitle("Select Action");
-            MenuItem edit = menu.add(Menu.NONE, 1, 1,"Edit Member");
-            MenuItem delete = menu.add(Menu.NONE, 2, 2, "Delete Member");
 
-            edit.setOnMenuItemClickListener(this);
-            delete.setOnMenuItemClickListener(this);
+            if(upcomingTabFragment.checkAdmin(mAuth)) {
+                menu.setHeaderTitle("Select Action");
+                MenuItem edit = menu.add(Menu.NONE, 1, 1, "Edit Member");
+                MenuItem delete = menu.add(Menu.NONE, 2, 2, "Delete Member");
+
+                edit.setOnMenuItemClickListener(this);
+                delete.setOnMenuItemClickListener(this);
+            }
         }
 
         @Override
@@ -115,7 +125,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     }
 
     public interface onItemClickListener{
-        void onItemClick(int position, String details, String name);
+        void onItemClick(int position, String details, String name, String url);
         void onEditClick(int position);
         void onDeleteClick(int position);
     }

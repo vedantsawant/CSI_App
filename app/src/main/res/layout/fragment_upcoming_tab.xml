@@ -18,7 +18,7 @@
         android:id="@+id/recycler_view_event"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cardview_dark_background"
+        android:background="@color/black"
         />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/Event_admin"

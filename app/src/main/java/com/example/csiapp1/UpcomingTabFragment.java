@@ -1,7 +1,9 @@
 package com.example.csiapp1;
+//not working properly
 
-
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,6 +55,9 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
     private DatabaseReference databaseReference;
     private ValueEventListener mDBlistener;
     private List<Upload> mUploads;
+    private FirebaseAuth mAuth;
+    private String admins[] = {"swapnilgore029@gmail.com", "test", "vedant.sawant.2604@gmail.com"};
+    public boolean isAdmin = false;
 
     public UpcomingTabFragment() {
         // Required empty public constructor
@@ -68,6 +75,24 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         fb1 = getActivity().findViewById(R.id.Event_admin);
+        mAuth = FirebaseAuth.getInstance();
+
+
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        Toast.makeText(getActivity(), "Welcome, " + user.getEmail(), Toast.LENGTH_SHORT).show();
+
+
+        for(int i = 0; i < admins.length; i++){
+            if(admins[i].equals(user.getEmail())){
+                isAdmin = true;
+            }
+        }
+
+        if(!isAdmin){
+            fb1.hide();
+        }
+
         fb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +115,7 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
         mAdapter.setItemClickListener(UpcomingTabFragment.this);
 
+
         mStorage = FirebaseStorage.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("csi_uploads/workshops");
 
@@ -99,22 +125,30 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
                 mUploads.clear();
 
-                for(DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Upload upload = postSnapshot.getValue(Upload.class);
-                    String date = upload.getDate().toString();
+                    String date = upload.getDate();
                     //Toast.makeText(getActivity(), date, Toast.LENGTH_SHORT).show();
-                   // int eventYear = Integer.parseInt(date.substring(8).trim());
-                   // int eventMonth = Integer.parseInt(date.substring(0,4).trim());
-                   // int eventDate = Integer.parseInt(date.substring(4,6).trim());
-                    System.out.println("HERE " + date);
+                    // int eventYear = Integer.parseInt(date.substring(8).trim());
+                    // int eventMonth = Integer.parseInt(date.substring(0,4).trim());
+                    // int eventDate = Integer.parseInt(date.substring(4,6).trim());
+                    // System.out.println("HERE " + date);
 
+                    int Wyear, Wmon, Wday = 0;
 
-                    int Wyear = Integer.parseInt(date.substring(date.length() - 4).trim());
+                    if(date.indexOf("-") == -1){
 
-                    String month = date.substring(0,4).trim();
-                    int Wmon = getWMonth(month);
-                    System.out.println("OK" + date);
-                    int Wday = Integer.parseInt(date.substring(3, date.indexOf(',')).trim());
+                     Wyear = Integer.parseInt(date.substring(date.length() - 4).trim());
+
+                    String month = date.substring(0, 4).trim();
+                    Wmon = getWMonth(month);
+                    Wday = Integer.parseInt(date.substring(3, date.indexOf(',')).trim());
+                    }else{
+                        Wyear = Integer.parseInt(date.substring(date.length() - 4).trim());
+                        Wday = Integer.parseInt(date.substring(0, date.indexOf('-')).trim());
+                        String month = date.substring(date.indexOf('-')+1, date.indexOf('-') + 4).trim();
+                        Wmon = getWMonth(month);
+                    }
 
                     Calendar c = new GregorianCalendar();
                     int mon = c.get(Calendar.MONTH);
@@ -124,28 +158,30 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
                     boolean upcoming = true;
 
-                    if(year > Wyear){
+                    if (year > Wyear) {
                         upcoming = false;
-                    }else{
-                        if(mon > Wmon){
+                    } else {
+                        if (mon > Wmon) {
                             upcoming = false;
-                        }else{
-                            if(day > Wday){
-                                upcoming = false;
+                        } else {
+                            if (mon == Wmon) {
+                                if (day > Wday) {
+                                    upcoming = false;
+                                }
                             }
                         }
                     }
 
-                    System.out.println("HERE Upcoming event ? : " + upcoming);
-                    if(upcoming){
-                    upload.setmKey(postSnapshot.getKey());
-                    mUploads.add(upload);
+                    // System.out.println("HERE Upcoming event ? : " + upcoming);
+                    if (upcoming) {
+                        upload.setmKey(postSnapshot.getKey());
+                        mUploads.add(upload);
                     }
-                }
 
                 mAdapter.notifyDataSetChanged();
 
                 mProgressCircle.setVisibility(View.INVISIBLE);
+            }
             }
 
             @Override
@@ -156,7 +192,16 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
         });
     }
 
-
+    public boolean checkAdmin(FirebaseAuth nAuth){
+        FirebaseUser user = nAuth.getCurrentUser();
+        boolean isAdmin = false;
+        for(int i = 0; i < admins.length; i++){
+            if(admins[i].equals(user.getEmail())){
+                isAdmin = true;
+            }
+        }
+        return isAdmin;
+    }
 
     private int getWMonth(String month){
         int Wmonth = 0;
@@ -165,7 +210,6 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
             Calendar cal = Calendar.getInstance();
             cal.setTime(Wdate);
             Wmonth = cal.get(Calendar.MONTH);
-
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -175,8 +219,8 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
 
     @Override
-    public void onItemClick(int position, String details, String name) {
-        DetailsDialog detailsDialog = new DetailsDialog(details, name);
+    public void onItemClick(int position, String details, String name, String url) {
+        DetailsDialog detailsDialog = new DetailsDialog(details, name, url);
         detailsDialog.show(getFragmentManager(), "details dialog");
     }
 

@@ -6,28 +6,29 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class DetailsDialog extends AppCompatDialogFragment {
 
-    String workhopDetails;
-    String workshopName;
+
+
+public class CouncilDialog extends AppCompatDialogFragment {
+
+    String councilPost;
+    String councilName;
     String mURL;
 
-    public DetailsDialog(String mworkhopDetails, String mName, String url){
-        workhopDetails = mworkhopDetails;
-        workshopName = mName;
-        mURL = url;
+    public CouncilDialog(String mcouncilPost, String mCouncilName, String url){
+        councilName = mCouncilName;
+        councilPost = mcouncilPost;
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(workshopName)
-                .setMessage(workhopDetails)
-                .setPositiveButton("Register", new DialogInterface.OnClickListener() {
+        builder.setTitle(councilName)
+                .setMessage(councilPost)
+                .setPositiveButton("Contact", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Registration link uri
@@ -44,4 +45,5 @@ public class DetailsDialog extends AppCompatDialogFragment {
                 });
         return builder.create();
     }
+
 }

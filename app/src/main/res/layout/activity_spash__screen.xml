@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/black"
+    android:layout_height="match_parent"
+    tools:context=".Spash_Screen">
+
+    <TextView
+        android:id="@+id/splash_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/spash_box"
+        android:fontFamily="@font/press_start_2p"
+        android:layout_marginHorizontal="5dp"
+        android:padding="10dp"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="5dp"
+        android:text="CSI VESIT"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        android:textStyle="bold" />
+    <ProgressBar
+        android:id="@+id/splash_progress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:max="100"
+        />
+    <com.wang.avi.AVLoadingIndicatorView
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/splash_text"
+        android:layout_marginTop="30dp"
+        android:id="@+id/splash_progress2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/AVLoadingIndicatorView.Large"
+        android:visibility="visible"
+        app:indicatorName="PacmanIndicator"
+        app:indicatorColor="@color/colorPrimary"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_below="@id/splash_progress"
+        android:layout_centerHorizontal="true"
+        android:padding="4dp"
+        android:layout_marginTop="20dp"
+        android:textSize="23sp"
+        android:textColor="@color/white"
+        />
+
+</RelativeLayout>
