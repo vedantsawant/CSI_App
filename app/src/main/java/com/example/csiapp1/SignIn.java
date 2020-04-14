@@ -18,6 +18,7 @@ import java.util.regex.Matcher;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,6 +34,7 @@ public class SignIn extends AppCompatActivity {
    // ProgressBar progressBar;
     AVLoadingIndicatorView avi;
     Button registerButton;
+    private String admins[] = {"swapnilgore029@gmail.com", "test", "vedant.sawant.2604@gmail.com"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +69,7 @@ public class SignIn extends AppCompatActivity {
     private void register(){
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-        String emailregex = "^[_A-Za-z0-9-]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.(?:[A-Z]{2,}|co)*(\\\\.(?:[A-Z]{2,}|in)*))+$";
+
 
         if (email.isEmpty()) {
             editTextEmail.setError("Email is required");
@@ -75,9 +77,12 @@ public class SignIn extends AppCompatActivity {
             return;
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() && !email.matches(emailregex)) {
-            editTextEmail.setError("Please enter a valid VES email");
-            editTextEmail.requestFocus();
+        int n = email.indexOf("@");
+        System.out.println("HERE " + n);
+        int len = email.length();
+        System.out.println("HERE " + len);
+        if(!email.substring(n+1).equals("ves.ac.in")){
+            Toast.makeText(this, "Please enter a valid ves id", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -117,19 +122,32 @@ public class SignIn extends AppCompatActivity {
 
     }
 
+    private boolean checkAdmin(String emailC){
+        boolean isAdmin = false;
+        for(int i = 0; i < admins.length; i++){
+            if(admins[i].equals(emailC)){
+                isAdmin = true;
+            }
+        }
+        return isAdmin;
+    }
+
     public void authenticate() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-        String emailregex = "^[_A-Za-z0-9-]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.(?:[A-Z]{2,}|co)*(\\\\.(?:[A-Z]{2,}|in)*))+$";
+        //String emailregex = "^[_A-Za-z0-9-]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.(?:[A-Z]{2,}|co)*(\\\\.(?:[A-Z]{2,}|in)*))+$";
         if (email.isEmpty()) {
             editTextEmail.setError("Email is required");
             editTextEmail.requestFocus();
             return;
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() && !email.matches(emailregex)) {
-            editTextEmail.setError("Please enter a valid email");
-            editTextEmail.requestFocus();
+        int n = email.indexOf("@");
+        System.out.println("HERE " + n);
+        int len = email.length();
+        System.out.println("HERE " + len);
+        if(!email.substring(n+1).equals("ves.ac.in") && !checkAdmin(email)){
+            Toast.makeText(this, "Please enter a valid ves id", Toast.LENGTH_SHORT).show();
             return;
         }
 
