@@ -20,8 +20,7 @@
         android:layout_height="wrap_content"
         android:background="@color/black"
         android:outlineAmbientShadowColor="@color/colorPrimaryDark"
-        android:outlineSpotShadowColor="@color/colorPrimaryDark"
-        android:theme="@style/Widget.BottomNavigationView14">
+        android:outlineSpotShadowColor="@color/colorPrimaryDark">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"

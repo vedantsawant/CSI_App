@@ -13,6 +13,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="10sp"
-        android:src="@drawable/signout"
+        android:src="@drawable/ic_exit_to_app_black_24dp"
         />
 </RelativeLayout>

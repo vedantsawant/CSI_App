@@ -54,7 +54,6 @@
         app:menu="@menu/btm_nav_menu"
         app:itemTextColor="@color/white"
         app:itemIconTint="@color/lightblue"
-        android:theme="@style/Widget.BottomNavigationView14"
         />
 
 
