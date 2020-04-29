@@ -107,7 +107,13 @@ public class TE_council extends AppCompatActivity implements ImageAdapter.onItem
 
     @Override
     public void onEditClick(int position) {
-        Toast.makeText(this, "Edit at position " + position, Toast.LENGTH_SHORT).show();
+        Upload selectItem = mUploads.get(position);
+        final String selectKey = selectItem.getmKey();
+        databaseReference.child(selectKey).child("regURL").setValue("2018swapnil.gore@ves.ac.in");
+        Intent intent = new Intent(TE_council.this, EditCouncil.class);
+        intent.putExtra("selectKey", selectKey);
+        intent.putExtra("councilName","te_council");
+        startActivity(intent);
     }
 
     @Override

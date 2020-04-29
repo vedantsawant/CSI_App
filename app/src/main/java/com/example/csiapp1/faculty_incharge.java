@@ -109,7 +109,13 @@ public class faculty_incharge extends AppCompatActivity implements ImageAdapter.
 
     @Override
     public void onEditClick(int position) {
-        Toast.makeText(this, "Edit at position " + position, Toast.LENGTH_SHORT).show();
+        Upload selectItem = mUploads.get(position);
+        final String selectKey = selectItem.getmKey();
+        databaseReference.child(selectKey).child("regURL").setValue("2018swapnil.gore@ves.ac.in");
+        Intent intent = new Intent(faculty_incharge.this, EditCouncil.class);
+        intent.putExtra("selectKey", selectKey);
+        intent.putExtra("councilName","teacher_council");
+        startActivity(intent);
     }
 
     @Override
