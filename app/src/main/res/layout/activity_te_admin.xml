@@ -84,6 +84,29 @@
             android:hint="Enter Post"
             android:textColorHint="@color/lightgrey"
             />
+        <TextView
+            android:id="@+id/contactCouncil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@id/workshop_details"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:text="Contact email id"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <EditText
+            android:id="@+id/contactText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="15dp"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Enter Contact Email id"
+            android:textColorHint="@color/lightgrey"
+            />
 
         <Button
             android:id="@+id/upload_button"

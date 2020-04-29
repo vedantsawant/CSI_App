@@ -36,7 +36,7 @@ public class teacher_admin extends AppCompatActivity {
     private ImageView MyimageView;
     private Button imgBtn;
     private Button uploadBtn;
-    private EditText workshopName, workshopDetails;
+    private EditText workshopName, workshopDetails, contactInfo;
     private ProgressBar progressBar;
 
     private Uri imaageUri;
@@ -59,6 +59,7 @@ public class teacher_admin extends AppCompatActivity {
         workshopName = findViewById(R.id.workshop_name);
         workshopDetails = findViewById(R.id.workshop_details);
         progressBar = findViewById(R.id.progress_bar);
+        contactInfo = findViewById(R.id.contactText);
 
         storageReference = FirebaseStorage.getInstance().getReference("/csi_uploads/teacher_council");
         databaseReference = FirebaseDatabase.getInstance().getReference("/csi_uploads/teacher_council");
@@ -126,7 +127,7 @@ public class teacher_admin extends AppCompatActivity {
                             while (!urlTask.isSuccessful());
                             Uri downloadUrl = urlTask.getResult();
                             Upload upload = new Upload(workshopName.getText().toString().trim(),
-                                    workshopDetails.getText().toString().trim(),downloadUrl.toString());
+                                    workshopDetails.getText().toString().trim(),downloadUrl.toString(), contactInfo.getText().toString());
 
                             String uploadId = databaseReference.push().getKey();
                             databaseReference.child(uploadId).setValue(upload);

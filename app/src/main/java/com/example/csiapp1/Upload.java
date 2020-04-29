@@ -11,6 +11,16 @@ public class Upload {
     private String mDate;
     private String regURL;
 
+    public String getContactURL() {
+        return contactURL;
+    }
+
+    public void setContactURL(String contactURL) {
+        this.contactURL = contactURL;
+    }
+
+    private String contactURL;
+
     public String getRegURL() {
         return regURL;
     }
@@ -47,7 +57,7 @@ public class Upload {
         regURL = URL;
     }
 
-    public Upload(String workshopName, String workshopDetails, String imageUrl){
+    public Upload(String workshopName, String workshopDetails, String imageUrl, String contact){
         if(workshopName.trim().equals("")){
              workshopName = "No Name";
         }
@@ -58,6 +68,7 @@ public class Upload {
         mimageUrl = imageUrl;
         mworkshopName =  workshopName;
         mWorkshopDetails = workshopDetails;
+        regURL = contact;
     }
 
     public String getMworkshopName() {

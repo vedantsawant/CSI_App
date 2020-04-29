@@ -86,6 +86,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
                     Upload upTest = mUploads.get(position);
                     details = upTest.getmWorkshopDetails();
                     String url = upTest.getRegURL();
+                    System.out.println(url + details);
                     String name = upTest.getMworkshopName();
                     mListener.onItemClick(position, details, name, url);
                 }
