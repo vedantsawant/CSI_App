@@ -105,7 +105,7 @@ public class SE_council extends AppCompatActivity implements ImageAdapter.onItem
 
 
     @Override
-    public void onItemClick(int position, String details, String name, String Url) {
+    public void onItemClick(int position, String details, String name, String Url, String date) {
         //DetailsDialog detailsDialog = new DetailsDialog(details, name, Url);
         CouncilDialog councilDialog = new CouncilDialog(details, name, Url);
         councilDialog.show(getSupportFragmentManager(), "details dialog");
@@ -116,7 +116,6 @@ public class SE_council extends AppCompatActivity implements ImageAdapter.onItem
     public void onEditClick(int position) {
         Upload selectItem = mUploads.get(position);
         final String selectKey = selectItem.getmKey();
-        databaseReference.child(selectKey).child("regURL").setValue("2018swapnil.gore@ves.ac.in");
         Intent intent = new Intent(SE_council.this, EditCouncil.class);
         intent.putExtra("selectKey", selectKey);
         intent.putExtra("councilName","se_council");

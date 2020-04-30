@@ -89,8 +89,8 @@ public class imageAct extends AppCompatActivity implements ImageAdapter.onItemCl
     }
 
     @Override
-    public void onItemClick(int position, String details, String name, String Url) {
-        DetailsDialog detailsDialog = new DetailsDialog(details, name, Url);
+    public void onItemClick(int position, String details, String name, String Url, String date) {
+        DetailsDialog detailsDialog = new DetailsDialog(details, name, Url, date);
         detailsDialog.show(getSupportFragmentManager(), "details dialog");
     }
 

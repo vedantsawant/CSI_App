@@ -102,7 +102,7 @@ public class faculty_incharge extends AppCompatActivity implements ImageAdapter.
 
 
     @Override
-    public void onItemClick(int position, String details, String name, String Url) {
+    public void onItemClick(int position, String details, String name, String Url, String date) {
         CouncilDialog councilDialog = new CouncilDialog(details, name, Url);
         councilDialog.show(getSupportFragmentManager(), "details dialog");
     }

@@ -219,14 +219,18 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
 
     @Override
-    public void onItemClick(int position, String details, String name, String url) {
-        DetailsDialog detailsDialog = new DetailsDialog(details, name, url);
+    public void onItemClick(int position, String details, String name, String url, String date) {
+        DetailsDialog detailsDialog = new DetailsDialog(details, name, url, date);
         detailsDialog.show(getFragmentManager(), "details dialog");
     }
 
     @Override
     public void onEditClick(int position) {
-        Toast.makeText(getActivity(), "Edit at position " + position, Toast.LENGTH_SHORT).show();
+        Upload selectItem = mUploads.get(position);
+        final String selectKey = selectItem.getmKey();
+        Intent intent = new Intent(getActivity(), EditEvent.class);
+        intent.putExtra("selectKey", selectKey);
+        startActivity(intent);
     }
 
     @Override

@@ -88,7 +88,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
                     String url = upTest.getRegURL();
                     System.out.println(url + details);
                     String name = upTest.getMworkshopName();
-                    mListener.onItemClick(position, details, name, url);
+                    String date = upTest.getDate();
+                    mListener.onItemClick(position, details, name, url, date);
                 }
             }
         }
@@ -126,7 +127,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     }
 
     public interface onItemClickListener{
-        void onItemClick(int position, String details, String name, String url);
+        void onItemClick(int position, String details, String name, String url, String date);
         void onEditClick(int position);
         void onDeleteClick(int position);
     }
