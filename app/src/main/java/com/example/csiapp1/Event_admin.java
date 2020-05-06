@@ -42,7 +42,7 @@ public class Event_admin extends AppCompatActivity implements DatePickerDialog.O
     private ImageView MyimageView;
     private Button imgBtn;
     private Button uploadBtn;
-    private EditText workshopName, workshopDetails, eventLink;
+    private EditText workshopName, workshopDetails;
     private ProgressBar progressBar;
     private Button setDateBtn;
 
@@ -69,7 +69,7 @@ public class Event_admin extends AppCompatActivity implements DatePickerDialog.O
         workshopDetails = findViewById(R.id.workshop_details_event);
         progressBar = findViewById(R.id.progress_bar_event);
         setDateBtn = findViewById(R.id.select_date);
-        eventLink = findViewById(R.id.formLinkEvent);
+
 
         storageReference = FirebaseStorage.getInstance().getReference("/csi_uploads/workshops");
         databaseReference = FirebaseDatabase.getInstance().getReference("/csi_uploads/workshops");
@@ -154,7 +154,7 @@ public class Event_admin extends AppCompatActivity implements DatePickerDialog.O
                             while (!urlTask.isSuccessful());
                             Uri downloadUrl = urlTask.getResult();
                             Upload upload = new Upload(workshopName.getText().toString().trim(),
-                                    workshopDetails.getText().toString().trim(),downloadUrl.toString(), eventDate, eventLink.getText().toString());
+                                    workshopDetails.getText().toString().trim(),downloadUrl.toString(), eventDate, "None");
 
                             String uploadId = databaseReference.push().getKey();
                             databaseReference.child(uploadId).setValue(upload);

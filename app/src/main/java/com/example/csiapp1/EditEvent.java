@@ -23,7 +23,7 @@ import java.util.Locale;
 public class EditEvent extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     private String eventDate;
-    private EditText formLink;
+    private EditText wsName;
     private Button selectDateBtn, uploadBtn;
     private DatabaseReference databaseReference;
 
@@ -32,7 +32,7 @@ public class EditEvent extends AppCompatActivity implements DatePickerDialog.OnD
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_event);
 
-        formLink = findViewById(R.id.formLinkEvent);
+        wsName = findViewById(R.id.wsNameEvent);
         selectDateBtn = findViewById(R.id.select_date);
         uploadBtn = findViewById(R.id.upload_button_event);
 
@@ -59,7 +59,7 @@ public class EditEvent extends AppCompatActivity implements DatePickerDialog.OnD
         String selectKey = getIntent().getStringExtra("selectKey");
         databaseReference = FirebaseDatabase.getInstance().getReference("/csi_uploads/workshops/" + selectKey);
         databaseReference.child("date").setValue(eventDate);
-        databaseReference.child("regURL").setValue(formLink.getText().toString());
+        databaseReference.child("mworkshopName").setValue(wsName.getText().toString());
     }
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {

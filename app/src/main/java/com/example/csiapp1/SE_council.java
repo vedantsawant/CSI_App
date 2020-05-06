@@ -105,7 +105,7 @@ public class SE_council extends AppCompatActivity implements ImageAdapter.onItem
 
 
     @Override
-    public void onItemClick(int position, String details, String name, String Url, String date) {
+    public void onItemClick(int position, String details, String name, String Url, String date, String email) {
         //DetailsDialog detailsDialog = new DetailsDialog(details, name, Url);
         CouncilDialog councilDialog = new CouncilDialog(details, name, Url);
         councilDialog.show(getSupportFragmentManager(), "details dialog");

@@ -89,7 +89,9 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
                     System.out.println(url + details);
                     String name = upTest.getMworkshopName();
                     String date = upTest.getDate();
-                    mListener.onItemClick(position, details, name, url, date);
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    String email = user.getEmail();
+                    mListener.onItemClick(position, details, name, url, date, email);
                 }
             }
         }
@@ -127,7 +129,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     }
 
     public interface onItemClickListener{
-        void onItemClick(int position, String details, String name, String url, String date);
+        void onItemClick(int position, String details, String name, String url, String date, String email);
         void onEditClick(int position);
         void onDeleteClick(int position);
     }

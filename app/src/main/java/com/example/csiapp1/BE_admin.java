@@ -184,8 +184,4 @@ public class BE_admin extends AppCompatActivity {
         }
     }
 
-    private void openImagesActivity(){
-        Intent intent = new Intent(this, imageAct.class);
-        startActivity(intent);
-    }
 }

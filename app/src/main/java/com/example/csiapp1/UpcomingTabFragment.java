@@ -80,6 +80,7 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
 
         FirebaseUser user = mAuth.getCurrentUser();
+        String emailId = user.getEmail();
         Toast.makeText(getActivity(), "Welcome, " + user.getEmail(), Toast.LENGTH_SHORT).show();
 
 
@@ -219,8 +220,10 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
 
     @Override
-    public void onItemClick(int position, String details, String name, String url, String date) {
-        DetailsDialog detailsDialog = new DetailsDialog(details, name, url, date);
+    public void onItemClick(int position, String details, String name, String url, String date, String email) {
+        Upload selectItem = mUploads.get(position);
+        final String selectKey = selectItem.getmKey();
+        DetailsDialog detailsDialog = new DetailsDialog(details, name, url, date, email, selectKey);
         detailsDialog.show(getFragmentManager(), "details dialog");
     }
 

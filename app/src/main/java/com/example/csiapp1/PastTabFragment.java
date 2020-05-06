@@ -168,8 +168,8 @@ public class PastTabFragment extends Fragment implements ImageAdapter.onItemClic
     }
 
     @Override
-    public void onItemClick(int position, String details, String name, String Url, String date) {
-        DetailsDialog detailsDialog = new DetailsDialog(details, name, Url, date);
+    public void onItemClick(int position, String details, String name, String Url, String date, String email) {
+        DetailsDialog detailsDialog = new DetailsDialog(details, name, Url, date, email, "none");
         detailsDialog.show(getFragmentManager(), "details dialog");
     }
 

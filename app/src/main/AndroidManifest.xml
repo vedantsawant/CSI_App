@@ -17,7 +17,6 @@
         <activity android:name=".teacher_admin" />
         <activity android:name=".BE_admin" />
         <activity android:name=".TE_admin" />
-        <activity android:name=".imageAct" />
         <activity android:name=".SE_admin" />
         <activity android:name=".faculty_incharge" />
         <activity android:name=".BE_council" />
