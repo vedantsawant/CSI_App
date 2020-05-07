@@ -7,21 +7,32 @@
     android:layout_height="match_parent"
     tools:context=".Spash_Screen">
 
+    <ImageView
+        android:id="@+id/csi_logo"
+        android:paddingTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/csi3"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="10dp"
+        />
     <TextView
+        android:layout_below="@+id/csi_logo"
         android:id="@+id/splash_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/spash_box"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/press_start_2p"
         android:layout_marginHorizontal="5dp"
-        android:padding="10dp"
+        android:padding="5dp"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="5dp"
         android:text="CSI VESIT"
         android:textColor="@color/white"
-        android:textSize="50dp"
+        android:textSize="45sp"
         android:textStyle="bold" />
     <ProgressBar
         android:id="@+id/splash_progress"
@@ -42,19 +53,20 @@
         style="@style/AVLoadingIndicatorView.Large"
         android:visibility="visible"
         app:indicatorName="PacmanIndicator"
-        app:indicatorColor="@color/colorPrimary"
+        app:indicatorColor="@color/white"
         />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        android:layout_below="@id/splash_progress"
+        android:text="The official app for CSI-VESIT"
+        android:fontFamily="@font/montserrat_regular"
+        android:layout_below="@id/splash_progress2"
         android:layout_centerHorizontal="true"
         android:padding="4dp"
         android:layout_marginTop="20dp"
-        android:textSize="23sp"
+        android:textSize="13sp"
         android:textColor="@color/white"
         />
 

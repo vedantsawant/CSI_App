@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,25 +48,11 @@ public class AboutFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         simulateDayNight(1);
-        logout = getView().findViewById(R.id.logout);
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                FirebaseUser user = mAuth.getCurrentUser();
-                if(user != null){
-                    mAuth.signOut();
-                    Intent intent = new Intent(getActivity(), SignIn.class);
-                    startActivity(intent);
-                    getActivity().finish();
-                }
-            }
-        });
     }
 
     void simulateDayNight(int currentSetting) {
-        final int DAY = 0;
+        final int DAY = 1;
         final int NIGHT = 1;
         //final int FOLLOW_SYSTEM = 3;
 

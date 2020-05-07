@@ -58,6 +58,7 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
     private FirebaseAuth mAuth;
     private String admins[] = {"swapnilgore029@gmail.com", "test", "vedant.sawant.2604@gmail.com"};
     public boolean isAdmin = false;
+    private FloatingActionButton logout;
 
     public UpcomingTabFragment() {
         // Required empty public constructor
@@ -76,8 +77,21 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
         super.onActivityCreated(savedInstanceState);
         fb1 = getActivity().findViewById(R.id.Event_admin);
         mAuth = FirebaseAuth.getInstance();
+        logout = getActivity().findViewById(R.id.logout);
 
-
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                FirebaseUser user = mAuth.getCurrentUser();
+                if(user != null){
+                    mAuth.signOut();
+                    Intent intent = new Intent(getActivity(), SignIn.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+            }
+        });
 
         FirebaseUser user = mAuth.getCurrentUser();
         String emailId = user.getEmail();

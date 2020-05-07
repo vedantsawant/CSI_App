@@ -20,15 +20,31 @@
         android:layout_height="match_parent"
         android:background="@color/black"
         />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal">
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/Event_admin"
         style="@style/Widget.MaterialComponents.FloatingActionButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:padding="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="10sp"
         android:src="@drawable/edit_admin"
         />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/logout"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10sp"
+        android:src="@drawable/ic_exit_to_app_black_24dp"
+        />
+    </LinearLayout>
 </RelativeLayout>

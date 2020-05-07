@@ -5,14 +5,5 @@
     android:background="@color/black"
     android:id="@+id/container">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/logout"
-        style="@style/Widget.MaterialComponents.FloatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="10sp"
-        android:src="@drawable/ic_exit_to_app_black_24dp"
-        />
+
 </RelativeLayout>
