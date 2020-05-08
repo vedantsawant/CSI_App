@@ -6,25 +6,31 @@
     android:background="@color/black"
     android:layout_height="match_parent"
     tools:context=".Spash_Screen">
-
+<LinearLayout
+    android:id="@+id/linear"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <ImageView
         android:id="@+id/csi_logo"
-        android:paddingTop="30dp"
-        android:layout_width="wrap_content"
+        android:background="@color/black"
+        android:paddingTop="15dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/csi3"
-        android:scaleX="0.8"
-        android:scaleY="0.8"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="10dp"
+        android:scaleY="0.7"
+        android:scaleX="0.7"
+        android:layout_gravity="center"
         />
+</LinearLayout>
     <TextView
-        android:layout_below="@+id/csi_logo"
+        android:layout_below="@+id/linear"
         android:id="@+id/splash_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/press_start_2p"
         android:layout_marginHorizontal="5dp"
         android:padding="5dp"
@@ -32,7 +38,7 @@
         android:lineSpacingExtra="5dp"
         android:text="CSI VESIT"
         android:textColor="@color/white"
-        android:textSize="45sp"
+        android:textSize="43sp"
         android:textStyle="bold" />
     <ProgressBar
         android:id="@+id/splash_progress"
@@ -46,14 +52,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/splash_text"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/splash_progress2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/AVLoadingIndicatorView.Large"
         android:visibility="visible"
         app:indicatorName="PacmanIndicator"
-        app:indicatorColor="@color/white"
+        app:indicatorColor="#b5edf5"
         />
 
     <TextView
@@ -62,11 +68,12 @@
         android:layout_height="wrap_content"
         android:text="The official app for CSI-VESIT"
         android:fontFamily="@font/montserrat_regular"
-        android:layout_below="@id/splash_progress2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
         android:layout_centerHorizontal="true"
         android:padding="4dp"
         android:layout_marginTop="20dp"
-        android:textSize="21sp"
+        android:textSize="15sp"
         android:textColor="@color/white"
         />
 
