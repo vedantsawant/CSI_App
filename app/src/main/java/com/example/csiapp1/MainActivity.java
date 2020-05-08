@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.about:
                     selected= new AboutFragment();
                     break;
+                case R.id.profile:
+                    selected= new ProfileFragment();
+                    break;
                 case R.id.council:
                     selected= new CouncilFragment();
                     break;

@@ -96,27 +96,29 @@
         android:text="@string/login"
         android:textSize="15dp" />
 
-    <Button
-        android:id="@+id/register"
-        android:layout_width="177dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_button2"
-        android:fontFamily="@font/aldrich"
-        android:text="@string/register"
-        android:textSize="15dp" />
 
+    <TextView
+        android:id="@+id/tvregister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Can't login? Sign up here"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="30dp"
+        android:fontFamily="@font/aldrich"
+        />
 
     <com.wang.avi.AVLoadingIndicatorView
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/progressbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/AVLoadingIndicatorView.Large"
         android:visibility="gone"
         app:indicatorName="BallClipRotatePulseIndicator"
-        app:indicatorColor="@color/lightblue"
+        app:indicatorColor="@color/white"
     />
 </LinearLayout>

@@ -27,7 +27,7 @@ public class AboutFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.about_fragment, container, false);
         String des = "The CSI-VESIT council is an amalgamation of various people who collectively work to create and host events which are enthralling as well as beneficial to the students of our college. This includes a plethora of technical events and educational workshops.\nThe council works on improving the quality of interaction with each one of its society members.";
-        simulateDayNight(1);
+        simulateDayNight(2);
         View aboutPage = new AboutPage(getActivity())
 
                 .isRTL(false)
@@ -47,21 +47,17 @@ public class AboutFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        simulateDayNight(1);
+        simulateDayNight(2);
 
     }
 
     void simulateDayNight(int currentSetting) {
         final int DAY = 1;
-        final int NIGHT = 1;
+        final int NIGHT = 2;
         //final int FOLLOW_SYSTEM = 3;
 
-        int currentNightMode = getResources().getConfiguration().uiMode
-                & Configuration.UI_MODE_NIGHT_MASK;
-        if (currentSetting == DAY && currentNightMode != Configuration.UI_MODE_NIGHT_NO) {
-            AppCompatDelegate.setDefaultNightMode(
-                    AppCompatDelegate.MODE_NIGHT_NO);
-        } else if (currentSetting == NIGHT && currentNightMode != Configuration.UI_MODE_NIGHT_YES) {
+        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+       if (currentSetting == NIGHT && currentNightMode != Configuration.UI_MODE_NIGHT_YES) {
             AppCompatDelegate.setDefaultNightMode(
                     AppCompatDelegate.MODE_NIGHT_YES);
         }

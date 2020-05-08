@@ -27,5 +27,10 @@
     <string name="register">Register</string>
     <string name="emailus">Email us</string>
     <string name="csicouncil">CSI Council 2019-20</string>
+    <string name="profile">Profile</string>
+    <string name="magazine">Magazine</string>
+    <string name="csi">CSI</string>
+    <string name="csivesit">CSI-VESIT</string>
+    <string name="news">News</string>
 
 </resources>

@@ -29,11 +29,10 @@ public class SignIn extends AppCompatActivity {
     EditText editTextEmail;
     EditText editTextPassword;
     Button loginButton;
-    TextView tv1, tv2;
+    TextView tv1, tv2,tvregister;
     private FirebaseAuth mAuth;
-   // ProgressBar progressBar;
     AVLoadingIndicatorView avi;
-    Button registerButton;
+
     private String admins[] = {"swapnilgore029@gmail.com", "test", "vedant.sawant.2604@gmail.com"};
 
     @Override
@@ -43,27 +42,29 @@ public class SignIn extends AppCompatActivity {
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         loginButton = findViewById(R.id.login);
-        registerButton = findViewById(R.id.register);
+
         tv1 = findViewById(R.id.tv1);
         tv2 = findViewById(R.id.tv2);
+        tvregister = findViewById(R.id.tvregister);
         mAuth = FirebaseAuth.getInstance();
        // progressBar = findViewById(R.id.progressbar);
         avi = findViewById(R.id.progressbar);
 
-                loginButton.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 authenticate();
             }
         });
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        tvregister.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent intent = new Intent(SignIn.this, registerUser.class);
                 startActivity(intent);
             }
         });
+
 
     }
 

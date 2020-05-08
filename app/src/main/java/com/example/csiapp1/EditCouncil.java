@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +21,7 @@ public class EditCouncil extends AppCompatActivity {
     private DatabaseReference databaseReference;
     EditText name, post, emailID;
     Button uploadBtn;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class EditCouncil extends AppCompatActivity {
         post = findViewById(R.id.post);
         emailID = findViewById(R.id.contactText);
         uploadBtn = findViewById(R.id.upload_button);
-
+        progressBar = findViewById(R.id.progress_bar);
 
         //
         uploadBtn.setOnClickListener(new View.OnClickListener() {
