@@ -143,6 +143,16 @@
         android:textSize="14sp"
         android:visibility="gone"
         android:textStyle="bold" />
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot password?"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_gravity="center_horizontal"
+
+        />
 
     <com.wang.avi.AVLoadingIndicatorView
         android:layout_gravity="center_horizontal"
