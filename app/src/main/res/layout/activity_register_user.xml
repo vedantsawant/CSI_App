@@ -1,0 +1,138 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".registerUser"
+    android:orientation="vertical"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/share_tech_mono"
+        android:padding="10dp"
+        android:text="Welcome!"
+        android:textColor="#fff"
+        android:textSize="60dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/share_tech_mono"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/email"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="@font/source_code_pro"
+        android:hint="Enter Email Address"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/lightgrey" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/share_tech_mono"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/password"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="@font/source_code_pro"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/lightgrey" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/share_tech_mono"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Phone"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="@font/source_code_pro"
+        android:hint="Enter Phone number"
+        android:inputType="phone"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/lightgrey" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="177dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button2"
+        android:fontFamily="@font/aldrich"
+        android:text="@string/register"
+        android:textSize="15dp" />
+
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/AVLoadingIndicatorView.Large"
+        android:visibility="gone"
+        app:indicatorName="BallClipRotatePulseIndicator"
+        app:indicatorColor="@color/lightblue"
+        />
+</LinearLayout>

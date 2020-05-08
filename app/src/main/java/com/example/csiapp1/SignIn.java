@@ -30,7 +30,7 @@ public class SignIn extends AppCompatActivity {
     EditText editTextPassword;
     Button loginButton;
     TextView tv1, tv2;
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
    // ProgressBar progressBar;
     AVLoadingIndicatorView avi;
     Button registerButton;
@@ -50,7 +50,7 @@ public class SignIn extends AppCompatActivity {
        // progressBar = findViewById(R.id.progressbar);
         avi = findViewById(R.id.progressbar);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+                loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 authenticate();
@@ -60,65 +60,10 @@ public class SignIn extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                register();
+                Intent intent = new Intent(SignIn.this, registerUser.class);
+                startActivity(intent);
             }
         });
-
-    }
-
-    private void register(){
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
-
-
-        if (email.isEmpty()) {
-            editTextEmail.setError("Email is required");
-            editTextEmail.requestFocus();
-            return;
-        }
-
-        int n = email.indexOf("@");
-        System.out.println("HERE " + n);
-        int len = email.length();
-        System.out.println("HERE " + len);
-        if(!email.substring(n+1).equals("ves.ac.in")){
-            Toast.makeText(this, "Please enter a valid VES id", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (password.isEmpty()) {
-            editTextPassword.setError("Password is required");
-            editTextPassword.requestFocus();
-            return;
-        }
-
-        if (password.length() < 6) {
-            editTextPassword.setError("Minimum length of password should be 6");
-            editTextPassword.requestFocus();
-            return;
-        }
-
-        avi.setVisibility(View.VISIBLE);
-        avi.show();
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's informatio
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(SignIn.this, MainActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(SignIn.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
-                        // ...
-                    }
-                });
 
     }
 
@@ -171,12 +116,8 @@ public class SignIn extends AppCompatActivity {
                 avi.setVisibility(View.GONE);
 
                 if (task.isSuccessful()) {
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    Intent intent = new Intent(SignIn.this, MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    avi.hide();
-                    startActivity(intent);
-                    finish();
+                    checkIfEmailVerified();
+
                 } else {
                     avi.hide();
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -188,7 +129,30 @@ public class SignIn extends AppCompatActivity {
 
 
     }
+    public void checkIfEmailVerified(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        if (user.isEmailVerified())
+        {
+            // user is verified, so you can finish this activity or send user to activity which you want.
+            Intent intent = new Intent(SignIn.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            avi.hide();
+            startActivity(intent);
+            finish();
+            Toast.makeText(SignIn.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            // email is not verified, so just prompt the message to the user and restart this activity.
+            // NOTE: don't forget to log out the user.
+            Toast.makeText(this, "You need to verify your email before you can proceed", Toast.LENGTH_SHORT).show();
+            if(user != null) {
+                FirebaseAuth.getInstance().signOut();
+            }
+            //restart this activity
+        }
+    }
     @Override
     protected void onStart() {
         super.onStart();
