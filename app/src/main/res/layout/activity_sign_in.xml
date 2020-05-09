@@ -102,13 +102,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Can't login? Sign up here"
-        android:textColor="@color/white"
+        android:textColor="@color/lightblue"
         android:textSize="15dp"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/aldrich"
         />
+
+
+    <TextView
+        android:id="@+id/verify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/aldrich"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="center"
+        android:text="Click here to resend verification mail"
+        android:textColor="@color/lightblue"
+        android:textSize="15dp" />
 
     <com.wang.avi.AVLoadingIndicatorView
         android:layout_gravity="center_horizontal"

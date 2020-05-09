@@ -34,6 +34,8 @@ public class SignIn extends AppCompatActivity {
     AVLoadingIndicatorView avi;
 
     private String admins[] = {"swapnilgore029@gmail.com", "test", "vedant.sawant.2604@gmail.com"};
+    private TextView verifyLink;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,11 @@ public class SignIn extends AppCompatActivity {
 
         tv1 = findViewById(R.id.tv1);
         tv2 = findViewById(R.id.tv2);
+
         tvregister = findViewById(R.id.tvregister);
+
+        verifyLink = findViewById(R.id.verify);
+
         mAuth = FirebaseAuth.getInstance();
        // progressBar = findViewById(R.id.progressbar);
         avi = findViewById(R.id.progressbar);
@@ -115,10 +121,9 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 avi.setVisibility(View.GONE);
-
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (task.isSuccessful()) {
                     checkIfEmailVerified();
-
                 } else {
                     avi.hide();
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -131,7 +136,7 @@ public class SignIn extends AppCompatActivity {
 
     }
     public void checkIfEmailVerified(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user.isEmailVerified())
         {
@@ -147,12 +152,44 @@ public class SignIn extends AppCompatActivity {
         {
             // email is not verified, so just prompt the message to the user and restart this activity.
             // NOTE: don't forget to log out the user.
+
             Toast.makeText(this, "You need to verify your email before you can proceed", Toast.LENGTH_SHORT).show();
+            verifyLink.setVisibility(View.VISIBLE);
+            verifyLink.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    sendVerificationEmail();
+                }
+            });
+
             if(user != null) {
                 FirebaseAuth.getInstance().signOut();
             }
             //restart this activity
         }
+    }
+
+    public void sendVerificationEmail(){
+        user.sendEmailVerification()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // email sent
+                            // after email is sent just logout the user and finish this activity
+                            Toast.makeText(SignIn.this, "Please check your email id for verification", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            // email not sent, so display message and restart the activity or do whatever you wish to do
+                            //restart this activity
+                            overridePendingTransition(0, 0);
+                            finish();
+                            overridePendingTransition(0, 0);
+                            startActivity(getIntent());
+                        }
+                    }
+                });
     }
     @Override
     protected void onStart() {
