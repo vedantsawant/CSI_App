@@ -16,8 +16,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatDialogFragment;
+    import androidx.annotation.NonNull;
+    import androidx.appcompat.app.AppCompatDialogFragment;
 
 
 public class DetailsDialog extends AppCompatDialogFragment {

@@ -34,7 +34,7 @@ public class SignIn extends AppCompatActivity {
     AVLoadingIndicatorView avi;
 
     private String admins[] = {"swapnilgore029@gmail.com", "test", "vedant.sawant.2604@gmail.com"};
-    private TextView verifyLink;
+    private TextView verifyLink, forgotPassword;
     private FirebaseUser user;
 
     @Override
@@ -51,10 +51,19 @@ public class SignIn extends AppCompatActivity {
         tvregister = findViewById(R.id.tvregister);
 
         verifyLink = findViewById(R.id.verify);
+        forgotPassword = findViewById(R.id.forgot_password);
 
         mAuth = FirebaseAuth.getInstance();
        // progressBar = findViewById(R.id.progressbar);
         avi = findViewById(R.id.progressbar);
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                passwordResetDialog passwordResetDialog = new passwordResetDialog(mAuth);
+                passwordResetDialog.show(getSupportFragmentManager(), "forgot password");
+            }
+        });
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +77,12 @@ public class SignIn extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(SignIn.this, registerUser.class);
                 startActivity(intent);
+            }
+        });
+        verifyLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendVerificationEmail();
             }
         });
 
