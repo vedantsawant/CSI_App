@@ -95,7 +95,7 @@ public class UpcomingTabFragment extends Fragment implements ImageAdapter.onItem
 
         FirebaseUser user = mAuth.getCurrentUser();
         String emailId = user.getEmail();
-        Toast.makeText(getActivity(), "Welcome, " + user.getEmail(), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getActivity(), "Welcome, " + user.getEmail(), Toast.LENGTH_SHORT).show();
 
 
         for(int i = 0; i < admins.length; i++){

@@ -12,7 +12,8 @@
         android:roundIcon="@drawable/csi3"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MagazineActivity"></activity>
+        <activity android:name=".WebActivity"></activity>
+        <activity android:name=".MagazineActivity" />
         <activity android:name=".ContactActivity" />
         <activity android:name=".registerUser" />
         <activity android:name=".EditEvent" />
