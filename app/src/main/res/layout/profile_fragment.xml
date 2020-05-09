@@ -39,6 +39,7 @@
                 android:src="@drawable/profileavatar"
                 android:contentDescription="TODO" />
             <TextView
+                android:id="@+id/tvname"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
@@ -71,7 +72,7 @@
                     android:src="@drawable/ic_email_black_24dp"
                     android:layout_margin="20dp"/>
                 <TextView
-                    android:id="@+id/email"
+                    android:id="@+id/tvemail"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:text="@string/email"
@@ -92,7 +93,7 @@
                         android:src="@drawable/ic_phone_black_24dp"
                         android:layout_margin="20dp"/>
                     <TextView
-                        android:id="@+id/contact"
+                        android:id="@+id/tvcontact"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:text="@string/cont"

@@ -79,12 +79,7 @@ public class SignIn extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        verifyLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendVerificationEmail();
-            }
-        });
+
 
 
     }

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.csiapp1">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/csi2"
@@ -9,7 +12,9 @@
         android:roundIcon="@drawable/csi3"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".registerUser"></activity>
+        <activity android:name=".MagazineActivity"></activity>
+        <activity android:name=".ContactActivity" />
+        <activity android:name=".registerUser" />
         <activity android:name=".EditEvent" />
         <activity android:name=".EditCouncil" />
         <activity android:name=".SignIn" />
@@ -43,8 +48,5 @@
             </intent-filter>
         </service>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>

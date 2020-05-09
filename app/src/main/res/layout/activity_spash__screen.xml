@@ -59,7 +59,7 @@
         style="@style/AVLoadingIndicatorView.Large"
         android:visibility="visible"
         app:indicatorName="PacmanIndicator"
-        app:indicatorColor="#b5edf5"
+        app:indicatorColor="#03A9F4"
         />
 
     <TextView

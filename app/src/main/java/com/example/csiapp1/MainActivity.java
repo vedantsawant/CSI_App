@@ -55,9 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.events:
                     selected= new EventFragment();
                     break;
-                case R.id.contact:
-                    selected= new ContactFragment();
-                    break;
                 case R.id.about:
                     selected= new AboutFragment();
                     break;

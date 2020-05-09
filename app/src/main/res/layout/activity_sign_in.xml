@@ -111,6 +111,16 @@
         android:fontFamily="@font/aldrich"
         android:text="@string/login"
         android:textSize="15dp" />
+        <com.wang.avi.AVLoadingIndicatorView
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AVLoadingIndicatorView.Large"
+            android:visibility="gone"
+            app:indicatorName="BallClipRotatePulseIndicator"
+            app:indicatorColor="@color/lightblue" />
 
         <TextView
         android:id="@+id/tvregister"
@@ -150,15 +160,5 @@
         android:textColor="@color/lightblue"
         android:layout_gravity="center_horizontal" />
 
-        <com.wang.avi.AVLoadingIndicatorView
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:id="@+id/progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/AVLoadingIndicatorView.Large"
-        android:visibility="gone"
-        app:indicatorName="BallClipRotatePulseIndicator"
-        app:indicatorColor="@color/white" />
     </LinearLayout>
 </LinearLayout>
