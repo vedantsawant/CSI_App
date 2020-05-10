@@ -44,6 +44,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="10sp"
+        android:visibility="gone"
         android:src="@drawable/ic_exit_to_app_black_24dp"
         />
     </LinearLayout>

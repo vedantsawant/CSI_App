@@ -138,10 +138,16 @@ public class registerUser extends AppCompatActivity {
                             Sstart++;
                         }
                         String FirstName = user.getEmail().substring(Fstart, Sstart);
-                        String lastName = user.getEmail().substring(Sstart + 1, uploadId.indexOf('@'));
+                        String lastName = user.getEmail().substring(Sstart + 1, uploadId.indexOf('@')+1);
                         databaseReference.child(uploadId).child("name").setValue(FirstName + " " + lastName);
                     }else{
-                            databaseReference.child(uploadId).child("name").setValue("swapnil gore");
+                            if(user.getEmail().equals("swapnilgore029@gmail.com")) {
+                                databaseReference.child(uploadId).child("name").setValue("swapnil gore");
+                            }else if(user.getEmail().equals("vedant.sawant.2604@gmail.com")){
+                                databaseReference.child(uploadId).child("name").setValue("vedant sawant");
+                            }else{
+                                databaseReference.child(uploadId).child("name").setValue("invalid");
+                            }
                         }
 
                         databaseReference.child(uploadId).child("emailID").setValue(emailS);

@@ -145,6 +145,7 @@
         android:fontFamily="@font/aldrich"
         android:padding="5dp"
         android:textAlignment="center"
+        android:visibility="gone"
         android:text="Click here to resend verification mail"
         android:textColor="@color/lightblue"
         android:textSize="15dp" />

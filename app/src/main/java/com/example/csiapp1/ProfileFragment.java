@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,11 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class ProfileFragment extends Fragment {
@@ -24,6 +30,10 @@ public class ProfileFragment extends Fragment {
     public MaterialCardView contactcard,magazinecard,webcard;
     public FloatingActionButton logout;
     private FirebaseAuth mAuth;
+    private DatabaseReference databaseReference2;
+    private String uploadId;
+    private  String userInfo[] = new String[3];
+    String mEmail;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,15 +48,18 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tvname = getView().findViewById(R.id.tvname);
+        tvname = getActivity().findViewById(R.id.tvname);
         tvemail = getView().findViewById(R.id.tvemail);
-        tvname = getView().findViewById(R.id.tvname);
+        tvcontact = getActivity().findViewById(R.id.tvcontact);
         profilepicture = getView().findViewById(R.id.profilepicture);
         contactcard = getView().findViewById(R.id.contactcard);
         magazinecard = getView().findViewById(R.id.magazinecard);
         webcard = getView().findViewById(R.id.webcard);
         logout = getView().findViewById(R.id.logout);
         mAuth = FirebaseAuth.getInstance();
+        databaseReference2 = FirebaseDatabase.getInstance().getReference().child("users/");
+        tvname.setText("name");
+        tvcontact.setText("contact number");
 
         contactcard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +99,37 @@ public class ProfileFragment extends Fragment {
 
         FirebaseUser user = mAuth.getCurrentUser();
         String emailId = user.getEmail();
+        mEmail = user.getEmail();
         tvemail.setText(emailId);
+        uploadId = "" + user.getEmail();
+        String regx = ".";
+        char[] ca = regx.toCharArray();
+        for (char c : ca) {
+            uploadId = uploadId.replace(""+c, "");
+        }
+
+        databaseReference2.child(uploadId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int count = 0;
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    userInfo[count] = data.getValue().toString();
+                    count++;
+                }
+                String name = userInfo[1];
+                tvname = getActivity().findViewById(R.id.tvname);
+                tvcontact = getActivity().findViewById(R.id.tvcontact);
+                tvcontact.setText(userInfo[2]);
+                tvname.setText(name);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
         //String phoneno = user.getPhoneNumber();
         //tvcontact.setText(phoneno);
        // String leftPart = emailId.substringBefore('@');
