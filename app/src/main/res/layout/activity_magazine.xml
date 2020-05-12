@@ -6,13 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     tools:context=".MagazineActivity">
-    <TextView
-        android:id="@+id/tvtitle"
+
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/magazine"
-        android:textColor="@color/white"
-        android:textSize="50dp"/>
+        android:layout_height="match_parent"
+        android:background="@color/black"/>
 
 </LinearLayout>

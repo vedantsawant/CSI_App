@@ -44,8 +44,8 @@ public class DetailsDialog extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(workshopName + " ( " + mDate + " )")
-                .setMessage(workhopDetails)
+        builder.setTitle(workshopName)
+                .setMessage(mDate + "\n\n"+ workhopDetails)
                 .setPositiveButton("Register", new DialogInterface.OnClickListener() {
 
                     @Override
