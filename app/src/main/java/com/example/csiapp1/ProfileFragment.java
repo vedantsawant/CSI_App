@@ -49,13 +49,13 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         tvname = getActivity().findViewById(R.id.tvname);
-        tvemail = getView().findViewById(R.id.tvemail);
+        tvemail = getActivity().findViewById(R.id.tvemail);
         tvcontact = getActivity().findViewById(R.id.tvcontact);
-        profilepicture = getView().findViewById(R.id.profilepicture);
-        contactcard = getView().findViewById(R.id.contactcard);
-        magazinecard = getView().findViewById(R.id.magazinecard);
-        webcard = getView().findViewById(R.id.webcard);
-        logout = getView().findViewById(R.id.logout);
+        profilepicture = getActivity().findViewById(R.id.profilepicture);
+        contactcard = getActivity().findViewById(R.id.contactcard);
+        magazinecard = getActivity().findViewById(R.id.magazinecard);
+        webcard = getActivity().findViewById(R.id.webcard);
+        logout = getActivity().findViewById(R.id.logout);
         mAuth = FirebaseAuth.getInstance();
         databaseReference2 = FirebaseDatabase.getInstance().getReference().child("users/");
         tvname.setText("name");
@@ -117,10 +117,14 @@ public class ProfileFragment extends Fragment {
                     count++;
                 }
                 String name = userInfo[1];
-                tvname = getActivity().findViewById(R.id.tvname);
-                tvcontact = getActivity().findViewById(R.id.tvcontact);
-                tvcontact.setText(userInfo[2]);
-                tvname.setText(name);
+                try {
+                    tvname = getActivity().findViewById(R.id.tvname);
+                    tvcontact = getActivity().findViewById(R.id.tvcontact);
+                    tvcontact.setText(userInfo[2]);
+                    tvname.setText(name);
+                }catch (Exception e){
+                    System.out.println("Failed");
+                }
             }
 
             @Override
