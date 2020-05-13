@@ -13,7 +13,7 @@
     android:orientation="vertical">
     <ImageView
         android:id="@+id/csi_logo"
-        android:background="@color/black"
+        android:background="@drawable/spash_box"
         android:paddingTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
